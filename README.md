@@ -2,6 +2,8 @@
 ## 16-09-2025 - Week 01
 ### Introduction & Foundations
 - How did analog rules compare to coding rules?
+  analogue rules:
+  Done physicaly by hand therfore it's imperfect
 - Where did ambiguity or randomness lead to surprising results?
 - Which historical examples inspired you?
 - What was difficult about setting up your environment?
