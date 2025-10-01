@@ -2,8 +2,7 @@
 ## 16-09-2025 - Week 01
 ### Introduction & Foundations
 - How did analog rules compare to coding rules?
-  analogue rules:
-  Done physicaly by hand therfore it's imperfect
+  - analogue rules: Done physicaly by hand therfore it's imperfect but organic, it's time consuming, not really flexibal (Hard to change once started), when there is randomness it's mostly by acident, it has texture and "personality" because the rules lived in the artist hands
 - Where did ambiguity or randomness lead to surprising results?
 - Which historical examples inspired you?
 - What was difficult about setting up your environment?
