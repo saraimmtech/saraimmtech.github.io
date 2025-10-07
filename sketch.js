@@ -1,61 +1,77 @@
-// Kaleidoscopic animated grid with 2D transformations, easing, and looping
-let cols = 6;
-let rows = 6;
-let cellSize;
-let t = 0;
-let loopDuration = 240; // frames for a full loop
-
+// Time-based generative clock visualization
 function setup() {
   createCanvas(600, 600);
-  cellSize = width / cols;
+  angleMode(DEGREES);
+  textAlign(CENTER, CENTER);
   rectMode(CENTER);
-  angleMode(RADIANS);
+  noStroke();
 }
 
 function draw() {
-  background(20);
+  // plain pink background
+  background(255, 182, 193);
+
+  // get current time
+  let hr = hour() % 12;
+  let mn = minute();
+  let sc = second();
+
   translate(width / 2, height / 2);
-  // Kaleidoscopic symmetry: draw in 6 mirrored sectors
-  let symmetry = 6;
-  for (let s = 0; s < symmetry; s++) {
-    push();
-    rotate((TWO_PI / symmetry) * s);
-    if (s % 2 === 1) scale(1, -1); // mirror every other sector
-    drawGrid();
-    pop();
-  }
-  t = (t + 1) % loopDuration;
+
+
+  // draw concentric arcs for seconds, minutes, hours
+  noFill();
+  strokeCap(SQUARE);
+
+  // seconds - outer
+  strokeWeight(6);
+  stroke(255, 100, 100);
+  arc(0, 0, 360, 360, -90, map(sc, 0, 60, -90, 270));
+
+  // minutes - middle
+  strokeWeight(10);
+  stroke(100, 200, 255);
+  arc(0, 0, 270, 270, -90, map(mn + sc / 60.0, 0, 60, -90, 270));
+
+  // hours - inner
+  strokeWeight(14);
+  stroke(200, 255, 150);
+  arc(0, 0, 100, 100, -90, map(hr + mn / 60.0, 0, 12, -90, 270));
+
+  // center pulse representing milliseconds
+  noStroke();
+  let ms = millis() % 1000;
+  let pulse = map(ms, 0, 1000, 0.8, 1.2);
+  fill(10, 10, 30, 220);
+  ellipse(0, 0, 40 * pulse, 40 * pulse);
+
+  // digital time display
+  fill(255);
+  textSize(14);
+  let ampm = hour() >= 12 ? 'PM' : 'AM';
+  let displayH = nf(hour() % 12 === 0 ? 12 : hour() % 12, 2);
+  let displayM = nf(mn, 2);
+  let displayS = nf(sc, 2);
+  push();
+  translate(0, 70);
+  fill(255, 245);
+  textSize(18);
+  text(displayH + ':' + displayM + ':' + displayS + ' ' + ampm, 0, 0);
+  pop();
+
+  // subtle date text
+  push();
+  translate(0, 95);
+  textSize(12);
+  fill(255, 200);
+  let d = day();
+  let mo = month();
+  let yr = year();
+  text(d + '/' + mo + '/' + yr, 0, 0);
+  pop();
 }
 
-function drawGrid() {
-  for (let i = -cols / 2 + 0.5; i < cols / 2; i++) {
-    for (let j = -rows / 2 + 0.5; j < rows / 2; j++) {
-      let x = i * cellSize;
-      let y = j * cellSize;
-      push();
-      translate(x, y);
-      // Easing for smooth looping
-      let loopT = (t / loopDuration) * TWO_PI;
-      let phase = (i + j) * 0.5;
-      let ease = easeInOutSine(sin(loopT + phase));
-      // Animate rotation and scale
-      rotate(loopT + phase + ease * PI);
-      let s = map(ease, -1, 1, 0.5, 1.2);
-      scale(s, s);
-      // Offset for extra movement
-      let offset = map(ease, -1, 1, -cellSize * 0.2, cellSize * 0.2);
-      translate(offset, 0);
-      // Draw element (could be image/video for more effect)
-      fill(180 + 60 * sin(loopT + phase), 120, 220, 180);
-      stroke(255, 80);
-      strokeWeight(2);
-      ellipse(0, 0, cellSize * 0.6, cellSize * 0.6);
-      pop();
-    }
-  }
-}
-
-// Easing function for smooth animation
-function easeInOutSine(x) {
-  return -0.5 * (cos(PI * x) - 1);
+function mousePressed() {
+  // Clicking will snapshot the canvas to a PNG
+  saveCanvas('time-snapshot', 'png');
 }
