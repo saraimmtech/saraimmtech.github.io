@@ -22,3 +22,8 @@ analogue rules: Done physicaly by hand therfore it's imperfect but organic, it's
 ### Grids & Patterns
 - Setting Up GitHub Pages
 - Working on Grids
+
+## 07-10-2025 - Week 04
+{% raw %}
+<iframe src="https://editor.p5js.org/saraimmtech/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe>
+{% endraw %}
