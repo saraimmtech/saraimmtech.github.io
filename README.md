@@ -22,6 +22,10 @@
 - How did you approach making your pattern “infinite” or seamlessly tileable? What challenges did you face?
 - How did working with code change your perception of artistic control compared to analog methods?
 - What did you learn about the relationship between simple rules and complex outcomes?
+
+{% raw %}
+<iframe src="https://editor.p5js.org/saraimmtech/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
+{% endraw %}
   
 ## 30-09-2025 - Week 03
 
