@@ -52,6 +52,9 @@
 
 ## 07-10-2025 - Week 04
 
+How does your clock represent time differently from a real one?
+What does cyclical vs linear mean in your design?
+
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
