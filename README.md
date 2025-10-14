@@ -6,12 +6,11 @@
 
 - How did analog rules compare to coding rules?
   - analogue rules: Done physicaly by hand therfore it's imperfect but organic, it's time consuming, not really flexibal (Hard to change once started), when there is randomness it's mostly by acident, it has texture and "personality" because the rules lived in the artist hands
-  - coding rules: Executed digitally by algorithms, precise until you ad randomness, Easy to tweak parameters or generate variations instantly, feels calculated/ clean -> no personality, because even the randomness is calculated at some point
+  - coding rules: Executed digitally by algorithms, precise until you add randomness, Easy to tweak parameters or generate variations instantly, feels calculated/ clean -> no personality, because even the randomness is calculated at some point
 
 - Where did ambiguity or randomness lead to surprising results?
   - it brings unique visual effects
-    > "When you write a program, it’s going to be executed the same way every single time. So if you define a system like this where things can happen at random, as the creator, you can be surprised by your own program, which is really great."
-Jared Tarbell
+    > "When you write a program, it’s going to be executed the same way every single time. So if you define a system like this where things can happen at random, as the creator, you can be surprised by your own program, which is really great." - Jared Tarbell
     
 - Which historical examples inspired you?
   - untiteld, Vera Molnár, 1985
@@ -25,8 +24,11 @@ Jared Tarbell
 ### Grids & Patterns
 
 - How did your initial paper sketches influence your digital pattern? Did anything change in translation?
+  - I use the sketche as guidance and motivation to stay focused on the goal I had in mind at the beginning. Can be frustrating when I set the goals to high which don't add to my knowledge yet.
 - What strategies did you use to balance order and randomness in your grid or pattern?
+  - 
 - Describe a moment when a mistake or unexpected result led to a new idea or direction.
+  - 
 - How did you approach making your pattern “infinite” or seamlessly tileable? What challenges did you face?
 - How did working with code change your perception of artistic control compared to analog methods?
 - What did you learn about the relationship between simple rules and complex outcomes?
