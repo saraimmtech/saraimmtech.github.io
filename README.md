@@ -15,6 +15,8 @@
 - Which historical examples inspired you?
   - untiteld, Vera Molnár, 1985
   - Substrate - Jared Tarbell, 2003
+
+  ![Example Image](content/day01/test.jpg)
     
 - What was difficult about setting up your environment?
   - i had issues with github pages because i wanted to do it from scratch to get familiar with the envroment because i'm sure that is something that is important in the future
