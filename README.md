@@ -56,11 +56,9 @@ How does your clock represent time differently from a real one?
 What does cyclical vs linear mean in your design?
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe>
-{% endraw %}
+<iframe src="https://editor.p5js.org/saraimmtech/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 Below is an interaction thingyy
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe>
-{% endraw %}
+<iframe src="https://editor.p5js.org/saraimmtech/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
