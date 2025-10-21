@@ -14,6 +14,9 @@
     
 - Which historical examples inspired you?
   - untiteld, Vera Molnár, 1985
+
+    <img src="vera.png" width="400" />
+    
   - Substrate - Jared Tarbell, 2003
     
     <img src="/jared.png" width="400"/>
