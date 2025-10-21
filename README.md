@@ -16,6 +16,8 @@
   - untiteld, Vera Molnár, 1985
   - Substrate - Jared Tarbell, 2003
     
+    <img src="/jared.png" width="400"/>
+    
 - What was difficult about setting up your environment?
   - i had issues with github pages because i wanted to do it from scratch to get familiar with the envroment because i'm sure that is something that is important in the future
   
