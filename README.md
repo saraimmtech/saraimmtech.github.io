@@ -58,10 +58,32 @@
 ## 07-10-2025 - Week 04
 
 How does your clock represent time differently from a real one?
+- How it represents time differently:
+Unlike a normal clock with fixed hands moving around a face, this design uses colored arcs that grow and shrink over time. Instead of hands rotating, each ring fills up as seconds, minutes, and hours pass — so time feels like expanding waves rather than ticking motion. The pulsing center and soft transitions make it feel alive and continuous instead of mechanical.
+
 What does cyclical vs linear mean in your design?
+- Cyclical vs linear meaning:
+The design is cyclical because time loops visually — when seconds, minutes, or hours reset, their arcs start over smoothly, showing the repeating rhythm of time. There’s no straight path or endpoint. A linear design would show time as a timeline or progress bar moving in one direction. Here, everything circles back, symbolizing time as an ongoing cycle rather than a straight line.
 
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+
+This code uses the current computer time to draw animated, circular arcs that represent hours, minutes, and seconds.
+
+- setup() makes a pink canvas and sets drawing modes (center alignment, degrees for angles).
+- draw() runs every frame, updates the clock, and redraws everything.
+  - It gets the current hour, minute, and second using p5.js time functions.
+  - The translate(width/2, height/2) moves the origin to the canvas center.
+  - Then three concentric arcs show time progress:
+    - Outer arc → seconds (thin red line)
+    - Middle arc → minutes (blue line)
+    - Inner arc → hours (greenish line)
+  - The arcs sweep clockwise using map() to convert time values to angles.
+  - A small dark pulsing circle in the center represents milliseconds (beats once per second).
+  - Digital time is displayed below the arcs in white text with AM/PM formatting.
+  - Below that, the date (day/month/year) is shown subtly.
+- mousePressed() saves the canvas as a PNG snapshot when you click.
 
 Below is an interaction thingyy
 
