@@ -57,6 +57,8 @@
 
 ## 07-10-2025 - Week 04
 
+#Clock
+
 How does your clock represent time differently from a real one?
 - How it represents time differently:
 Unlike a normal clock with fixed hands moving around a face, this design uses colored arcs that grow and shrink over time. Instead of hands rotating, each ring fills up as seconds, minutes, and hours pass — so time feels like expanding waves rather than ticking motion. The pulsing center and soft transitions make it feel alive and continuous instead of mechanical.
@@ -85,12 +87,27 @@ This code uses the current computer time to draw animated, circular arcs that re
   - Below that, the date (day/month/year) is shown subtly.
 - mousePressed() saves the canvas as a PNG snapshot when you click.
 
-Below is an interaction thingyy
+# Circle-Drawing tool
 
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-Etch A Sketch
+This sketch makes a simple generative circle-drawing tool. Every time you click, it drops a randomly sized, randomly colored circle at the mouse position.
+
+**How it works:**
+- *circles* stores all created circles as *objects {x, y, r, color}*.
+- *DEFAULT_RADIUS* is a base size that gets scaled randomly when you click.
+- *setup()* makes a white canvas, turns off strokes so circles look clean.
+- *draw()* loops through the *circles* array each frame and draws every one — that’s why older circles stay visible.
+  - *mousePressed()* adds a new circle with:
+  - random radius (20–120% of default)
+  - random color with slight transparency (so overlaps blend nicely)
+  - position where you clicked
+    
+**Summary:**
+Each click adds a new circle, building up a layered field of colors — a simple interactive generative composition where randomness and repetition create the pattern.
+
+# Etch A Sketch
 
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/-WTDxlDWW" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
