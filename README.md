@@ -95,3 +95,56 @@ Etch A Sketch
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/-WTDxlDWW" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
+This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls.
+
+**Top-level data**
+- *buffer* — *createGraphics(...)* offscreen canvas where all drawn lines go (so lines persist and can be cleared separately).
+- *stylus* / *prevStylus* — current and previous pen positions inside the buffer.
+- *leftKnob*, *rightKnob* — two Knob objects representing the physical knobs; left controls horizontal, right vertical.
+- *lastAngles* — stores previous knob angles so movement is computed from angle differences.
+- *speedFactor* — scales how much knob rotation translates to stylus movement (higher = faster pointer).
+  
+**Knob object**
+- *Knob(x,y,r,orientation)* stores position, radius, visual *angle*, *grabbed* state and *orientation* (stored but not functionally used in this code).
+- *draw()* — draws a round knob with a small indicator line rotated by *angle*.
+- *hitTest(mx,my)* — checks if mouse is inside the knob circle.
+  
+**Setup**
+- Canvas and buffer created, buffer cleared with *resetBuffer()*.
+- Stylus starts centered in the buffer.
+- Knobs positioned at bottom left / bottom right. *angleMode(RADIANS)* is used.
+  
+**Draw loop**
+- Draws the red Etch A Sketch frame and places the *buffer* image inside it (translated by *translate(40,40)*).
+- Draws a tiny indicator for current stylus position on top of the buffer.
+- Draws knob UI and labels.
+- Calls *applyKnobMovement()* every frame to convert knob rotations to movement on the buffer.
+- Handles *shaking* animation: small horizontal wobble, then clears *buffer* after ~30 frames.
+  
+**applyKnobMovement() — the important mapping**
+- Computes angle deltas: *dA_left = leftKnob.angle - lastAngles.left*, same for right.
+- Updates *lastAngles* to current angles.
+- Converts deltas to pixel movement:
+  - *dx = dA_left * (speedFactor * 60)*
+  - *dy = dA_right * (speedFactor * 60)*
+    (so small angle changes move the stylus; 60 is an arbitrary scale factor)
+- Moves *stylus* by *dx, dy*, constraining it inside the buffer bounds.
+- Draws a line on *buffer* from *prevStylus* to *stylus* so the path is etched.
+  
+**User interactions**
+- *mousePressed()* sets *grabbed* for a knob if clicked; stores *lastMouseAngle* (used to make dragging feel relative).
+- *mouseDragged()* updates the grabbed knob’s *angle* using *atan2(mouseY - knob.y, mouseX - knob.x)* so turning the mouse around a knob rotates it.
+- *mouseReleased()* drops knobs.
+- *keyPressed()* provides keyboard control: arrow/WASD rotate the left/right knobs; spacebar triggers *startShake()* to clear.
+- *startShake()* starts the shake animation and eventually calls *resetBuffer()* to wipe the drawing.
+  
+**Other small details**
+- *resetBuffer()* fills the buffer with a gray background (clears the drawing).
+- Stroke caps/joins set for smoother lines.
+- *orientation* on the *Knob* is present but not used — both knobs affect movement via their angles (the left maps to *dx*, the right to *dy*).
+- Angles are in radians; movement comes from change in angle, not absolute angle.
+
+**Summary (one-liner)**
+It simulates an Etch A Sketch by converting knob rotation deltas into x/y stylus movement that draws persistent lines on an offscreen buffer; knobs are interactive with mouse + keyboard, and shaking clears the buffer.
+
+
