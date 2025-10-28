@@ -57,7 +57,7 @@
 
 ## 07-10-2025 - Week 04
 
-#Clock
+# Clock
 
 How does your clock represent time differently from a real one?
 - How it represents time differently:
