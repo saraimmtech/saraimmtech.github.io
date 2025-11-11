@@ -164,4 +164,20 @@ This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buf
 **Summary (one-liner)**
 It simulates an Etch A Sketch by converting knob rotation deltas into x/y stylus movement that draws persistent lines on an offscreen buffer; knobs are interactive with mouse + keyboard, and shaking clears the buffer.
 
+## Project Idea
+
+### Mind Garden
+
+**Concept**
+
+An interactive visualization of emotions. Users type one word describing how they feel, and the system grows a visual form based on its semantic meaning — e.g., “calm” creates smooth blue waves, “angry” triggers red spikes and chaotic movement.
+
+**Interaction**
+- Text input = seed word
+- Algorithm translates sentiment → color, form, and motion rules
+- Over time, the canvas becomes a garden of emotions from the users
+
+**Why?**
+
+It’s interactive and personal — visualizing emotions is always fascinating, as the outcomes can be surprising and unique each time. I can also imagine this being a fun and creative tool for psychologists to include on their websites, allowing visitors to express their feelings and receive engaging visual feedback.
 
