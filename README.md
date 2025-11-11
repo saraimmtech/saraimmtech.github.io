@@ -164,9 +164,17 @@ This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buf
 **Summary (one-liner)**
 It simulates an Etch A Sketch by converting knob rotation deltas into x/y stylus movement that draws persistent lines on an offscreen buffer; knobs are interactive with mouse + keyboard, and shaking clears the buffer.
 
-## Project Idea
+# Week 08
 
-### Mind Garden
+## Faces
+
+This week we learend how to write a program that generates parametric faces and learned about the difference between **Continuous parameters** (smooth transitions) and **Discrete parameters** (distinct options). 
+
+{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+# Project Idea
+
+## Mind Garden
 
 **Concept**
 
