@@ -197,5 +197,5 @@ It’s interactive and personal — visualizing emotions is always fascinating, 
 
 ## First Prototype
 
-{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/6MoSRjm5T" height="450" frameborder="no"></iframe> {% endraw %}
+{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/6MoSRjm5T" width=100% height="450" frameborder="no"></iframe> {% endraw %}
 
