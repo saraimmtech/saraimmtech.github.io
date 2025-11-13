@@ -197,5 +197,7 @@ It’s interactive and personal — visualizing emotions is always fascinating, 
 
 ## First Prototype
 
+To help me visualize in what i wanna go I started with a simple canvas where i can put in emotions, depending on the word a different "plant" is growing in the canvas
+
 {% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
