@@ -38,6 +38,10 @@
 - How did working with code change your perception of artistic control compared to analog methods?
 - What did you learn about the relationship between simple rules and complex outcomes?
 
+{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
+{% endraw %}
+
+
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
@@ -48,6 +52,8 @@
 
 - Setting Up GitHub Pages
 - Working on Grids
+
+In the first Canva i played around with shapes and turning options. In the second one i played around with color changes and it's fascinating what small changes likes color already have such an inpact on the art. The second one feels more like a floating simulation rather than the second one.
 
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/yL7A0Io8S" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
@@ -89,10 +95,10 @@ This code uses the current computer time to draw animated, circular arcs that re
 
 # Circle-Drawing tool
 
+This sketch makes a simple generative circle-drawing tool. Every time you click, it drops a randomly sized, randomly colored circle at the mouse position.
+
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
-
-This sketch makes a simple generative circle-drawing tool. Every time you click, it drops a randomly sized, randomly colored circle at the mouse position.
 
 **How it works:**
 - *circles* stores all created circles as *objects {x, y, r, color}*.
@@ -188,4 +194,8 @@ An interactive visualization of emotions. Users type one word describing how the
 **Why?**
 
 It’s interactive and personal — visualizing emotions is always fascinating, as the outcomes can be surprising and unique each time. I can also imagine this being a fun and creative tool for psychologists to include on their websites, allowing visitors to express their feelings and receive engaging visual feedback.
+
+## First Prototype
+
+{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/6MoSRjm5T" height="450" frameborder="no"></iframe> {% endraw %}
 
