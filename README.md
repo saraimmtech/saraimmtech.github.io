@@ -1,8 +1,8 @@
 # Module Journal - Generative Computer Graphics
 
-## 16-09-2025 - Week 01
+## Lesson 01 - Introduction & Foundations
 
-### Introduction & Foundations
+### References
 
 - How did analog rules compare to coding rules?
   - analogue rules: Done physicaly by hand therfore it's imperfect but organic, it's time consuming, not really flexibal (Hard to change once started), when there is randomness it's mostly by acident, it has texture and "personality" because the rules lived in the artist hands
@@ -24,16 +24,12 @@
 - What was difficult about setting up your environment?
   - i had issues with github pages because i wanted to do it from scratch to get familiar with the envroment because i'm sure that is something that is important in the future
   
-## 23-09-2025 - Week 02
-
-### Grids & Patterns
+## Lesson 02 - Grids & Iterative Patterns - Structured generative systems
 
 - How did your initial paper sketches influence your digital pattern? Did anything change in translation?
   - I use the sketche as guidance and motivation to stay focused on the goal I had in mind at the beginning. Can be frustrating when I set the goals to high which don't add to my knowledge yet.
 - What strategies did you use to balance order and randomness in your grid or pattern?
-  - 
 - Describe a moment when a mistake or unexpected result led to a new idea or direction.
-  - 
 - How did you approach making your pattern “infinite” or seamlessly tileable? What challenges did you face?
 - How did working with code change your perception of artistic control compared to analog methods?
 - What did you learn about the relationship between simple rules and complex outcomes?
@@ -45,10 +41,6 @@
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
-  
-## 30-09-2025 - Week 03
-
-### Grids & Patterns
 
 - Setting Up GitHub Pages
 - Working on Grids
@@ -61,9 +53,9 @@ In the first Canva i played around with shapes and turning options. In the secon
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/gHh0xZ56N" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-## 07-10-2025 - Week 04
+## Lesson 03 - Clock / Time - Generative representation of time
 
-# Clock
+### Clock
 
 How does your clock represent time differently from a real one?
 - How it represents time differently:
@@ -93,7 +85,9 @@ This code uses the current computer time to draw animated, circular arcs that re
   - Below that, the date (day/month/year) is shown subtly.
 - mousePressed() saves the canvas as a PNG snapshot when you click.
 
-# Circle-Drawing tool
+## Lesson 04 - Drawing Machines - Generative systems as drawing tools
+
+### Circle-Drawing tool
 
 This sketch makes a simple generative circle-drawing tool. Every time you click, it drops a randomly sized, randomly colored circle at the mouse position.
 
@@ -113,7 +107,7 @@ This sketch makes a simple generative circle-drawing tool. Every time you click,
 **Summary:**
 Each click adds a new circle, building up a layered field of colors — a simple interactive generative composition where randomness and repetition create the pattern.
 
-# Etch A Sketch
+### Etch A Sketch
 
 {% raw %}
 <iframe src="https://editor.p5js.org/saraimmtech/full/-WTDxlDWW" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
@@ -170,13 +164,20 @@ This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buf
 **Summary (one-liner)**
 It simulates an Etch A Sketch by converting knob rotation deltas into x/y stylus movement that draws persistent lines on an offscreen buffer; knobs are interactive with mouse + keyboard, and shaking clears the buffer.
 
-# Week 08
+## Lesson 06 - Faces / Parametric Generators - Parametric design through faces
 
-## Faces
+### Faces
 
 This week we learend how to write a program that generates parametric faces and learned about the difference between **Continuous parameters** (smooth transitions) and **Discrete parameters** (distinct options). 
 
 {% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+### Reflection
+
+- How is your machine “expressive” rather than “functional”?
+- What limitations or constraints shaped your outcome?
+
+## Lesson 07 - Pixels - Pixels as material + Advanced pixel transformations
 
 # Project Idea
 
