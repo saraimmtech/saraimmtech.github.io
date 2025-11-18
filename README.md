@@ -201,3 +201,10 @@ To help me visualize in what i wanna go I started with a simple canvas where i c
 
 {% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
+## Pixels
+
+What if pixels had different shapes?
+What if they were arranged differently than in a grid?
+What if they could be represented in a completely different form?
+How can pixel data (color, brightness, position) drive visual generation?
+
