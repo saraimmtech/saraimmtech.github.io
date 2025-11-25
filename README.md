@@ -38,12 +38,12 @@ Two historical examples particularly inspired me: Untitled by Vera Molnár (1985
 - How did working with code change your perception of artistic control compared to analog methods?
 - What did you learn about the relationship between simple rules and complex outcomes?
 
-{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
 
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
 
 - Setting Up GitHub Pages
@@ -52,10 +52,10 @@ Two historical examples particularly inspired me: Untitled by Vera Molnár (1985
 In the first Canva i played around with shapes and turning options. In the second one i played around with color changes and it's fascinating what small changes likes color already have such an inpact on the art. The second one feels more like a floating simulation rather than the second one.
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/yL7A0Io8S" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/yL7A0Io8S" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/gHh0xZ56N" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/gHh0xZ56N" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 ## Lesson 03 - Clock / Time - Generative representation of time
 
@@ -70,7 +70,7 @@ What does cyclical vs linear mean in your design?
 The design is cyclical because time loops visually — when seconds, minutes, or hours reset, their arcs start over smoothly, showing the repeating rhythm of time. There’s no straight path or endpoint. A linear design would show time as a timeline or progress bar moving in one direction. Here, everything circles back, symbolizing time as an ongoing cycle rather than a straight line.
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 
 This code uses the current computer time to draw animated, circular arcs that represent hours, minutes, and seconds.
@@ -96,7 +96,7 @@ This code uses the current computer time to draw animated, circular arcs that re
 This sketch makes a simple generative circle-drawing tool. Every time you click, it drops a randomly sized, randomly colored circle at the mouse position.
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 **How it works:**
 - *circles* stores all created circles as *objects {x, y, r, color}*.
@@ -114,7 +114,7 @@ Each click adds a new circle, building up a layered field of colors — a simple
 ### Etch A Sketch
 
 {% raw %}
-<iframe src="https://editor.p5js.org/saraimmtech/full/-WTDxlDWW" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls.
 
@@ -174,7 +174,7 @@ It simulates an Etch A Sketch by converting knob rotation deltas into x/y stylus
 
 This week we learend how to write a program that generates parametric faces and learned about the difference between **Continuous parameters** (smooth transitions) and **Discrete parameters** (distinct options). 
 
-{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 ### Reflection
 
@@ -211,6 +211,6 @@ It’s interactive and personal — visualizing emotions is always fascinating, 
 
 To help me visualize in what i wanna go I started with a simple canvas where i can put in emotions, depending on the word a different "plant" is growing in the canvas
 
-{% raw %} <iframe src="https://editor.p5js.org/saraimmtech/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 
