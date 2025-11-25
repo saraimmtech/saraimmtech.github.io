@@ -30,26 +30,34 @@ Two historical examples particularly inspired me: Untitled by Vera Molnár (1985
   
 ## Lesson 02 - Grids & Iterative Patterns - Structured generative systems
 
-- How did your initial paper sketches influence your digital pattern? Did anything change in translation?
-  - I use the sketche as guidance and motivation to stay focused on the goal I had in mind at the beginning. Can be frustrating when I set the goals to high which don't add to my knowledge yet.
-- What strategies did you use to balance order and randomness in your grid or pattern?
-- Describe a moment when a mistake or unexpected result led to a new idea or direction.
-- How did you approach making your pattern “infinite” or seamlessly tileable? What challenges did you face?
-- How did working with code change your perception of artistic control compared to analog methods?
-- What did you learn about the relationship between simple rules and complex outcomes?
+**How did your initial paper sketches influence your digital pattern? Did anything change in translation?**
+
+I use the sketche as guidance and motivation to stay focused on the goal I had in mind at the beginning. Can be frustrating when I set the goals to high which don't add to my knowledge yet.
+
+**What strategies did you use to balance order and randomness in your grid or pattern?**
+
+Your tiles are not turning at the same time because each tile has a different rotation speed.
+- let angle = frameCount * 0.01 * (x + y);
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
+  
+Because x + y is different for every tile:
+- tiles in the top-left (x=0, y=0) → rotate slowly
+- tiles in the bottom-right (x=19, y=9) → rotate much faster
+So the farther down/right a tile is, the faster it spins.
 
+**Describe a moment when a mistake or unexpected result led to a new idea or direction.**
+  
+In the first Canva i played around with shapes and turning options. In the second one i played around with color changes and it's fascinating what small changes likes color already have such an inpact on the art. The second one feels more like a floating simulation rather than the second one.
 
 {% raw %}
 <iframe src="https://editor.p5js.org/trisaratops2.0/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
 
-- Setting Up GitHub Pages
-- Working on Grids
+**How did you approach making your pattern “infinite” or seamlessly tileable? What challenges did you face?**
 
-In the first Canva i played around with shapes and turning options. In the second one i played around with color changes and it's fascinating what small changes likes color already have such an inpact on the art. The second one feels more like a floating simulation rather than the second one.
+Since draw() runs automatically at around 60 frames per second, the sketch constantly refreshes, which allows any rule or transformation to unfold endlessly over time.
 
 {% raw %}
 <iframe src="https://editor.p5js.org/trisaratops2.0/full/yL7A0Io8S" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
@@ -57,16 +65,24 @@ In the first Canva i played around with shapes and turning options. In the secon
 {% raw %}
 <iframe src="https://editor.p5js.org/trisaratops2.0/full/gHh0xZ56N" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
+**How did working with code change your perception of artistic control compared to analog methods?**
+
+Working with code made me rethink what artistic control actually means. In analog methods, every mark is physical and irreversible—changes are slow, and mistakes become part of the artwork. That limitation creates a certain intimacy with the material; you can “feel” the artist in every imperfection, and randomness often emerges naturally through the process.
+
+With code, the experience is almost the opposite. The medium is incredibly flexible: I can adjust parameters instantly, undo decisions effortlessly, and generate endless variations without restarting from scratch. This makes experimentation much more accessible, because nothing feels permanent or risky. At the same time, even randomness becomes something I define intentionally through algorithms. If something unexpected happens, it’s not because of physical chance but because something in the logic behaved differently than I anticipated.
+
+This shift made me see coded art as both powerful and curious—it’s controlled, yet still capable of surprising me. But the “personality” doesn’t come from the hand of the artist; it emerges from the system I build and how it evolves over time.
+
 ## Lesson 03 - Clock / Time - Generative representation of time
 
 ### Clock
 
-How does your clock represent time differently from a real one?
-- How it represents time differently:
+**How does your clock represent time differently from a real one?**
+
 Unlike a normal clock with fixed hands moving around a face, this design uses colored arcs that grow and shrink over time. Instead of hands rotating, each ring fills up as seconds, minutes, and hours pass — so time feels like expanding waves rather than ticking motion. The pulsing center and soft transitions make it feel alive and continuous instead of mechanical.
 
-What does cyclical vs linear mean in your design?
-- Cyclical vs linear meaning:
+**What does cyclical vs linear mean in your design?**
+
 The design is cyclical because time loops visually — when seconds, minutes, or hours reset, their arcs start over smoothly, showing the repeating rhythm of time. There’s no straight path or endpoint. A linear design would show time as a timeline or progress bar moving in one direction. Here, everything circles back, symbolizing time as an ongoing cycle rather than a straight line.
 
 {% raw %}
