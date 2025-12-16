@@ -241,6 +241,8 @@ An interactive visualization of emotions. Users type one word describing how the
 
 It’s interactive and personal — visualizing emotions is always fascinating, as the outcomes can be surprising and unique each time. I can also imagine this being a fun and creative tool for psychologists to include on their websites, allowing visitors to express their feelings and receive engaging visual feedback.
 
+(Sketch of my core idea)
+
 ## First Prototype
 
 To help me visualize in what i wanna go I started with a simple canvas where i can put in emotions, depending on the word a different "plant" is growing in the canvas.
@@ -334,13 +336,44 @@ Since a human beings emotion can't just be pushed into 3 catories and a Matthew 
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/XbXVN_bI6" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-## Prototype 4
+# Shift of Concept
 
-### Improvment of Mood Categories
+My initial concept was an Emotional Garden—an interactive visualization where a single emotion word (e.g., "calm," "angry") seeds a personal, evolving, abstract form. The core fascination was the translation of subjective inner states into objective visual output.
 
-## Prototype 5
+However, I recognized an opportunity to apply this generative visualization not just to personal emotion, but to constructive public engagement.
 
-### Improvment User Interactions
+The Shift: I'm transitioning from a purely expressive tool for personal reflection to an analytical tool for constructive service feedback. Instead of asking "How do you feel?" I'm asking "How did this service/feature make you feel, and why?"
 
+So the Core Concept of getting a visual feedback stays the same, simply its purpose has changed.
 
+## The Generative Feedback Machine
 
+This interactive system is designed for service websites to gather more nuanced, actionable feedback than a simple star rating or open text box typically provides.
+
+Input: Users interact with a feedback prompt after using a service (e.g., "How was the checkout process?"). They are presented with a constrained choice of emotional tones ("Frustrated," "Efficient," "Confused," "Delighted," etc.) and a small text input for elaboration.
+
+Generative Visualization: The system combines the chosen emotional tone and the semantic content of the text input to generate a unique, abstract 3D or 2D p5.js form.
+
+Emotion (Color/Motion): "Frustrated" might trigger jagged, rapid, red/orange forms. "Delighted" might generate smooth, slow, expanding yellow/gold spheres.
+
+Text Semantics (Form/Complexity): Analyzing the text ("The delivery was late" vs. "The design was sleek") refines the form. The word "late" might introduce a dragging, distorted texture, while "sleek" might sharpen the edges and increase smoothness.
+
+Visualization as Data: Each piece of feedback is instantly added to a collective, evolving visualization (a "Feedback Cloud" or "Service Aura").
+
+The service provider can view this collective visualization, immediately identifying dominant tones (a massive "Frustrated" spike) and drilling down into the specific forms/text associated with it to understand why the service feels that way.
+
+## Giorgia Lupi (Data Humanism)
+
+(Visual of her work)
+
+My visualization is grounded in the philosophy of Data Humanism, championed by designers like Giorgia Lupi. Her work advocates for visualizing data not as cold, objective facts, but as nuanced, subjective human experiences. By translating collective user sentiment (Frustrated, Delighted, etc.) into a growing, abstract sculptural form, we are providing a humanistic, emotional summary of the service experience, moving beyond the sterile efficiency of a standard feedback form.
+
+## Iterations
+
+ (sketch of my core idea)
+
+###  01
+
+In the first prototype I was trying visualize that in a simple way.
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/iqbApEpX_" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
