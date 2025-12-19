@@ -6,6 +6,12 @@ This journal documents my exploration of generative computer graphics and the sh
 
 Is it a peach, a nut, or Kakadu? In our first Lecture we had an introduction to **Generative Computer Graphics** but not in the way
 
+<img 
+  src="MediaPNG/Peach.heic" 
+  width="400" 
+  style="display:block; margin:auto; transform: rotate(90deg);" 
+/>
+
 **How did analog rules compare to coding rules?**
 
 When I created physically by hand, the preocess was imperfect but organic. Every stroke or decision carried a bit of human unpredictability - texture, irregularity, even small accidents that introduced a kind of natural randomness. Which is the beauty of analog art, but also it time consuming and makes the work less flexible.
