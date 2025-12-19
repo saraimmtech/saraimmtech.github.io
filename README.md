@@ -6,11 +6,7 @@ This journal documents my exploration of generative computer graphics and the sh
 
 Is it a peach, a nut, or Kakadu? In our first Lecture we had an introduction to **Generative Computer Graphics** but not in the way
 
-<img 
-  src="MediaPNG/Peach.heic" 
-  width="400" 
-  style="display:block; margin:auto; transform: rotate(90deg);" 
-/>
+<img src="MediaPNG/Peach.png" width="400" style="transform: rotate(90deg);" />
 
 **How did analog rules compare to coding rules?**
 
