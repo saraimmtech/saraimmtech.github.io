@@ -43,7 +43,9 @@ I use the sketche as guidance and motivation to stay focused on the goal I had i
 **What strategies did you use to balance order and randomness in your grid or pattern?**
 
 Your tiles are not turning at the same time because each tile has a different rotation speed.
-- let angle = frameCount * 0.01 * (x + y);
+
+
+` let angle = frameCount * 0.01 * (x + y); `
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
