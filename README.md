@@ -1,12 +1,14 @@
 # Module Journal - Generative Computer Graphics
 
-This journal documents my exploration of generative computer graphics and the shifting role of authorship when creative processes move from the analog to the algorithmic. Coming from a background where making things by hand feels intuitive, working with code as a creative medium challenged many of my usual assumptions. Instead of directly shaping every line or texture myself, I had to define rules, build systems, and allow algorithms to take part in the creative process.
+This journal documents my exploration of **Generative Computer Graphics** and the shifting role of authorship when creative processes move from the analog to the algorithmic. Coming from a background where making things by hand feels intuitive, working with code as a creative medium challenged many of my usual assumptions. Instead of directly shaping every line or texture myself, I had to define rules, build systems, and allow algorithms to take part in the creative process.
 
 ## Lesson 01 - Introduction & Foundations
 
-Is it a peach, a nut, or Kakadu? In our first Lecture we had an introduction to **Generative Computer Graphics** but not in the way
+In the first lecture, we played a game during class to get to know **Generative Computer Graphics**. We drew a random number of dots on a piece of paper. Then, one of us started by connecting the dots with a line and drawing a new dot in the middle of the line.
 
-<img src="MediaPNG/Peach.png" width="400" />
+<img src="MediaPNG/Peach.png" width="500" />
+
+To be honest, we might have done it a bit wrong, but in the end, we had a random sketch that started as a few dots and ended up looking like… a peach? A cockatoo? We’re not sure, but it was a fun.
 
 **How did analog rules compare to coding rules?**
 
