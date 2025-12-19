@@ -364,7 +364,7 @@ The service provider can view this collective visualization, immediately identif
 
 ## Giorgia Lupi (Data Humanism)
 
-(Visual of her work)
+<img src="MediaPNG/dialogue.png" width="400"/>
 
 My visualization is grounded in the philosophy of Data Humanism, championed by designers like Giorgia Lupi. Her work advocates for visualizing data not as cold, objective facts, but as nuanced, subjective human experiences. By translating collective user sentiment (Frustrated, Delighted, etc.) into a growing, abstract sculptural form, we are providing a humanistic, emotional summary of the service experience, moving beyond the sterile efficiency of a standard feedback form.
 
