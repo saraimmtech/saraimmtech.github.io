@@ -49,34 +49,21 @@ Instead of just drawing squares, I’m using a `sin()` wave combined with the`fr
 - The Offset: By adding `(x + y)` to the math, the squares don't pulse all at once. It creates a ripple effect that travels diagonally across the screen. It’s a perfect example of how adding one tiny variable to a simple rule can make a rigid grid feel organic and fluid.
 
 
---------
+After experimenting with rotating lines and pulsing squares, I wanted to combine the two ideas into turning tiles. In the process, I stumbled onto something pretty interesting.
 
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
+It’s hard to miss that the tiles are turning at different speeds. This happened because of how I set up the rotation math:
 
-`let angle = frameCount * 0.01 * (x + y); `
+`let angle = frameCount * 0.01 * (x + y);`
 
-{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
-{% endraw %}
-  
-Because x + y is different for every tile:
-- tiles in the top-left (x=0, y=0) → rotate slowly
-- tiles in the bottom-right (x=19, y=9) → rotate much faster
-So the farther down/right a tile is, the faster it spins.
+Because the value of `x + y` is different for every single tile, the speed changes depending on where the tile is located. The tiles in the top-left rotate slowly, while the ones in the bottom-right spin much faster. This was one of those great moments where an unexpected result—basically a "mistake"—led to a completely new idea.
 
-**Describe a moment when a mistake or unexpected result led to a new idea or direction.**
-  
-In the first Canva i played around with shapes and turning options. In the second one i played around with color changes and it's fascinating what small changes likes color already have such an inpact on the art. The second one feels more like a floating simulation rather than the second one.
+In the first canvas, I mostly played around with shapes and different ways to make things turn. In the second version, I experimented with color. It’s fascinating how such a small change in color can completely shift the mood of the piece. While the first one feels more mechanical, the second one feels like a floating simulation.
 
-{% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
-{% endraw %}
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-
-Working with code made me rethink what artistic control actually means. In analog methods, every mark is physical and irreversible—changes are slow, and mistakes become part of the artwork. That limitation creates a certain intimacy with the material; you can “feel” the artist in every imperfection, and randomness often emerges naturally through the process.
-
-With code, the experience is almost the opposite. The medium is incredibly flexible: I can adjust parameters instantly, undo decisions effortlessly, and generate endless variations without restarting from scratch. This makes experimentation much more accessible, because nothing feels permanent or risky. At the same time, even randomness becomes something I define intentionally through algorithms. If something unexpected happens, it’s not because of physical chance but because something in the logic behaved differently than I anticipated.
-
-This shift made me see coded art as both powerful and curious—it’s controlled, yet still capable of surprising me. But the “personality” doesn’t come from the hand of the artist; it emerges from the system I build and how it evolves over time.
+Since the `draw()` function refreshes about 60 times per second, the sketch is constantly unfolding. I noticed there’s a specific moment where all the tiles seem to align and turn together—it almost looks like a wave catching the sun or a mirror reflecting light, even though the colors aren't actually changing. It’s that element of surprise in the code that Jared Tarbell talked about.
 
 ## Lesson 03 - Clock / Time - Generative representation of time
 
