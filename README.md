@@ -1,38 +1,24 @@
 # Module Journal - Generative Computer Graphics
 
-This journal documents my exploration of **Generative Computer Graphics** and the shifting role of authorship when creative processes move from the analog to the algorithmic. Coming from a background where making things by hand feels intuitive, working with code as a creative medium challenged many of my usual assumptions. Instead of directly shaping every line or texture myself, I had to define rules, build systems, and allow algorithms to take part in the creative process.
+Coming from a background in carpentry, where my job description was basically "build it with your bare hands," using code as a creative tool has challenged me in ways I didn't see coming. This journal is a space for me to document the whole journey—the mistakes, the "aha!" moments, the total failures, and the wins. It’s a look at how my creative process is shifting from the analog world to an algorithmic one.
 
 ## Lesson 01 - Introduction & Foundations
 
-In the first lecture, we played a game during class to get to know **Generative Computer Graphics**. We drew a random number of dots on a piece of paper. Then, one of us started by connecting the dots with a line and drawing a new dot in the middle of the line.
+In our first lecture, we dove into Generative Computer Graphics by playing a game called Sprouts. We started with a few random dots on paper, then took turns connecting them with lines and adding a new dot in the middle of every connection. We kept going until we were totally stuck. You can see our result below.
 
 <img src="MediaPNG/Peach.png" width="500" />
 
-To be honest, we might have done it a bit wrong, but in the end, we had a random sketch that started as a few dots and ended up looking like… a peach? A cockatoo? We’re not sure, but it was a fun.
+Honestly, we might have messed up the rules a bit, but we ended up with this random sketch that started as dots and finished looking like... a peach? A cockatoo? We aren't really sure, but we had a blast making it.
 
-**How did analog rules compare to coding rules?**
+It reminded me of something Jared Tarbell said: "When you write a program, it’s going to be executed the same way every single time. So if you define a system like this where things can happen at random, as the creator, you can be surprised by your own program, which is really great."
 
-When I created physically by hand, the preocess was imperfect but organic. Every stroke or decision carried a bit of human unpredictability - texture, irregularity, even small accidents that introduced a kind of natural randomness. Which is the beauty of analog art, but also it time consuming and makes the work less flexible.
+That’s exactly why I picked one of his pieces to feature here; it's that element of randomness that makes the visuals feel unique.
 
-Coding rules, in contrast, are executed by algorithms with complete precision. Nothing happens by accident unless randomness is intentionally programmed. This makes digital work extremely flexible: parameters can be adjusted instantly, and endless variations can be generated in seconds. At the same time, the output often feels cleaner, more calculated, and somewhat detached. Even when randomness is included, it is still governed by logic rather than intuition.
+<img src="MediaPNG/jared.png" width="400"/>
 
-**Where did ambiguity or randomness lead to surprising results?**
+Substrate - Jared Tarbell, 2003
 
-The program began generating variations that felt almost collaborative, as if the system and I were co-creating. This randomness brought uniqueness and a kind of visual richness that I wouldn’t have arrived at through intentional design alone.
-
-As Jared Tarbell explains: *“When you write a program, it’s going to be executed the same way every single time. So if you define a system like this where things can happen at random, as the creator, you can be surprised by your own program, which is really great.”*
-
-**References**
-
-Two historical examples particularly inspired me: Untitled by Vera Molnár (1985) and Substrate by Jared Tarbell (2003). I’m always fascinated by artworks that start with a single simple component and, through repetition and rule-based variation, unfold into a complete and complex image. Both pieces play with this idea beautifully.
-
-  - untiteld, Vera Molnár, 1985
-
-    <img src="MediaPNG/vera.png" width="400" />
-    
-  - Substrate - Jared Tarbell, 2003
-    
-    <img src="MediaPNG/jared.png" width="400"/>
+I’ve always been fascinated by art that begins with one simple piece and, through nothing but repetition and a few rules, grows into something incredibly complex and complete.
   
 ## Lesson 02 - Grids & Iterative Patterns - Structured generative systems
 
