@@ -16,8 +16,6 @@ That’s exactly why I picked one of his pieces to feature here; it's that eleme
 
 <img src="MediaPNG/jared.png" width="400"/>
 
-Substrate - Jared Tarbell, 2003
-
 I’ve always been fascinated by art that begins with one simple piece and, through nothing but repetition and a few rules, grows into something incredibly complex and complete.
   
 ## Lesson 02 - Grids & Iterative Patterns - Structured generative systems
