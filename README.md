@@ -97,25 +97,24 @@ Easy said: A visual rotation and data accumulation are locked to the same 1:1 re
 
 ## Lesson 04 - Drawing Machines - Generative systems as drawing tools
 
+Instead of directly controlling every line, you define the logic and let the system execute it.
+
 ### Circle-Drawing tool
 
-This sketch makes a simple generative circle-drawing tool. Every time you click, it drops a randomly sized, randomly colored circle at the mouse position.
-
-{% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
-
-**How it works:**
-- *circles* stores all created circles as *objects {x, y, r, color}*.
-- *DEFAULT_RADIUS* is a base size that gets scaled randomly when you click.
-- *setup()* makes a white canvas, turns off strokes so circles look clean.
-- *draw()* loops through the *circles* array each frame and draws every one — that’s why older circles stay visible.
-  - *mousePressed()* adds a new circle with:
-  - random radius (20–120% of default)
-  - random color with slight transparency (so overlaps blend nicely)
-  - position where you clicked
-    
-**Summary:**
 Each click adds a new circle, building up a layered field of colors — a simple interactive generative composition where randomness and repetition create the pattern.
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/yo2mJqUoO" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+Unlike my previous sketches where things were drawn and then refreshed every frame, this one uses an empty "container" (an array) to store every circle I create. By pushing new data into this list every time I click, the code "remembers" every single circle’s position, size, and color. In the `draw()` loop, it constantly cycles through that list to redraw the entire collection, allowing the image to build up over time rather than just disappearing.
+
+Even though I’m the one choosing where the circles go, I’ve left some of the decisions up to the code.
+
+-	Every time I click, the code takes my `DEFAULT_RADIUS`and multiplies it by a random number between 0.2 and 1.2. This gives the "stamps" some organic variety.
+-	I set the colors to pull from a random range of RGB values with a bit of transparency (200).
+  
+It’s a mix of my own intent—clicking exactly where I want—and the computer’s ability to add those "surprises".
+
+---
 
 ### Etch A Sketch
 
