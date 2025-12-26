@@ -223,13 +223,13 @@ This design decision:
 
 The pen is restricted to the buffer boundaries, preserving the edges of the “screen.”
 
-** Drawing as Accumulation**
+**Drawing as Accumulation**
 
 ` buffer.line(prevStylus.x, prevStylus.y, stylus.x, stylus.y); `
 
 Every frame leaves a permanent mark. There is no undo button—only delete. This creates a subtle pressure toward intentionality and patience, qualities that also characterize analog drawing tools.
 
-** Frame and Interface Design**
+**Frame and Interface Design**
 
 The surrounding red frame is purely graphical in nature, but plays an important role in perception: it contextualizes the interaction as an object rather than a canvas.
 
