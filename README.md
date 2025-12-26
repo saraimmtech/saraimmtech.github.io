@@ -145,13 +145,13 @@ Finally, someone did: it was an Etch A Sketch. The toy was invented in the late 
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="600" frameborder="no"></iframe> {% endraw %}
 
-This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls. You can operate it either with the mouse by interacting with the knobs, or using the keyboard: W and S control up and down movement, while A and D control left and right movement.
+This sketch is an Etch A Sketch–inspired drawing tool built with p5.js. It uses an offscreen buffer as the “screen,” which allows the etched lines to remain while the main canvas continuously redraws the frame and interface elements. The drawing can be controlled either by interacting with the knobs using the mouse, or through the keyboard: W and S move the stylus up and down, while A and D move it left and right.
 
 **Offscreen Drawing Buffer**
 
 `let buffer; `
 
-The buffer represents the Etch A Sketch “screen”. This allows the frame and interface to redraw each frame without deleting the elements that have already been drawn.
+The buffer functions as the Etch A Sketch screen. Because all drawing happens there, the frame and controls can be redrawn every frame without affecting the marks that have already been made. This separation helps the drawing behave more like a physical surface than a typical digital canvas.
 
 **Stylus State**
 
@@ -159,26 +159,13 @@ The buffer represents the Etch A Sketch “screen”. This allows the frame and 
 
 `let prevStylus; `
 
-The pen is an abstract point that represents the current position of the internal drawing mechanism. Each frame:
-
-  - The previous position is saved.
-  - The new position is calculated.
-  - A line is drawn between the two.
-
-This creates continuous strokes instead of individual points, which enhances the mechanical aesthetics of plotting.
+The stylus represents the current position of the hidden drawing mechanism. It is not a visible pen, but an abstract point that moves across the buffer. Each frame, the previous position is stored, a new position is calculated, and a line is drawn between the two. This produces continuous strokes rather than discrete points, reinforcing the feeling of a mechanical plotting process.
 
 **Button object: Rotary encoder as control signal**
 
 `function Knob(x, y, r, orientation) `
 
-Each button is a small object with:
-
-  - A position (x, y)
-  - A radius (r)
-  - A rotation angle
-  - A grab status for tracking interaction
-
-The button does not move the pen directly. Instead, changes in its angle are interpreted as movement signals.
+Each knob is defined as a small object with a position, a radius, a rotation angle, and a grab state to track interaction. The knobs do not move the stylus directly. Instead, changes in their rotation are interpreted as movement signals, which are later translated into drawing.
 
 **Visual Representation**
 
@@ -189,17 +176,17 @@ Knob.prototype.draw = function() {
   line(0, -this.r*0.5, 0, -this.r*0.9);
 };
 ```
-A simple line indicator shows the alignment, making the rotation readable without numerical feedback.
+A simple line indicator shows the current orientation of each knob. This makes the rotation legible without the need for numerical values or additional interface elements.
 
 **Interaction Logic**
 
 `Knob.prototype.hitTest = function(mx, my) `
 
-This allows the button to be clicked directly using distance-based hit detection. After grabbing, the angle of the button is updated as follows:
+The knobs can be grabbed using distance-based hit detection. Once grabbed, their angle is updated using:
 
 `atan2(mouseY - knob.y, mouseX - knob.x) `
 
-This converts circular mouse movements into angular rotations, maintaining intuitive control.
+This converts circular mouse movement into rotation, preserving an intuitive and physically familiar interaction.
 
 **Translating Rotation into Drawing**
 
@@ -209,39 +196,33 @@ The most important conceptual step takes place in `applyKnobMovement()`:
 
 `let dA_right = rightKnob.angle - lastAngles.right;`
 
-Instead of using absolute angles, the system measures the angular deviation per image. These deviations are then converted into linear movements:
+Instead of using absolute angles, the sketch measures how much each knob has rotated since the last frame. These angular changes are then converted into linear movement:
 
 `let dx = dA_left  * (speedFactor * 60); `
 
 `let dy = dA_right * (speedFactor * 60); `
 
-This design decision:
-
-  - Prevents sudden jumps.
-  - Promotes slow, continuous interaction.
-  - Imitates the inertia of physical mechanisms.
-
-The pen is restricted to the buffer boundaries, preserving the edges of the “screen.”
+This approach avoids sudden jumps, encourages slow and continuous interaction, and introduces a sense of inertia similar to physical mechanisms. The stylus is constrained to the boundaries of the buffer, preserving the edges of the drawing surface.
 
 **Drawing as Accumulation**
 
 `buffer.line(prevStylus.x, prevStylus.y, stylus.x, stylus.y); `
 
-Every frame leaves a permanent mark. There is no undo button—only delete. This creates a subtle pressure toward intentionality and patience, qualities that also characterize analog drawing tools.
+Each frame leaves behind a permanent mark. There is no undo, and no way to correct a line once it has been drawn. This creates a subtle pressure toward patience and intentionality, echoing the constraints of analog drawing tools.
 
 **Frame and Interface Design**
 
-The surrounding red frame is purely graphical in nature, but plays an important role in perception: it contextualizes the interaction as an object rather than a canvas.
+The red frame surrounding the drawing area is purely graphical, but it plays an important role in how the sketch is perceived. It frames the interaction as an object or device rather than an open canvas:
 
 `rect(0, 0, width, height, 28); `
 
 `text('ETCH A SKETCH', width/2, 28); `
 
-This design reinforces the metaphor and encourages the user to adopt a playful, exploratory mindset.
+This reinforces the metaphor and invites a more playful, exploratory approach to drawing.
 
 **Reflection**
 
-This system demonstrates how simple mathematical relationships—angular change, linear mapping, and constraint—can produce rich generative behavior when paired with a strong interaction metaphor.
+This sketch shows how relatively simple relationships—angular change, linear mapping, and constraint—can produce rich generative behavior when paired with a strong interaction metaphor. The drawing emerges over time through use, rather than through direct control, positioning the system somewhere between a drawing tool and a generative machine.
 
 ## Lesson 06 - Faces / Parametric Generators - Parametric design through faces
 
