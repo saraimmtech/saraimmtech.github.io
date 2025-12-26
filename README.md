@@ -78,6 +78,23 @@ Unlike a normal clock with fixed hands moving around a face, this design uses co
 The most important part of this code is the `map()` function. Since time naturally comes in segments—60 seconds, 60 minutes, 12 hours—I had to find a way to translate those numbers into degrees to get the arcs to draw themselves around a circle.
 I set it up so that as the time increases, the arc grows from -90 degrees (the top of the circle) all the way to 270 degrees. To make the movement feel fluid rather than jumpy, I added a bit of extra math, like `mn + sc / 60.0`. This ensures the minute hand doesn’t just snap to the next position every minute; instead, it creeps forward slightly with every second, making the system feel much more organic. To top it off, I used `millis()`to create a center pulse—a tiny "heartbeat" that keeps the sketch moving even when the hour hand seems still.
 
+---
+
+I’ve always been fascinated by how much actually happens in the world every single second, and I wanted to try and capture that scale within my clock. I used the website everysecond.io as a reference—it visualizes things like a whale’s heartbeat, Apple’s marketing spend, or the sheer amount of plastic entering the ocean.
+The count starts the moment the page is refreshed. Since I’m also studying UI and UX, I have to admit it’s a bit of a "fail" on my part that I forgot to include a text display showing how many minutes have actually passed. In this system, one full 360-degree rotation equals one minute, and the data counts up second by second.
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/vN-LeUx2A" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+The 60-Second Cycle A full 360∘ turn in p5.js is represented as `TWO_PI`. To ensure the needle completes this turn in exactly 60 seconds, the rotation is defined by the ratio of time passed against the target duration:
+
+- `millis() / 1000`: Converts the internal clock to raw seconds.
+- `/ 60`: Determines the "percentage" of the minute that has completed.
+- `* TWO_PI`: Maps that percentage to the circle.
+
+Every cell in the grid references the exact same `angle` variable. This creates a unified mechanical movement —acting as a single, distributed clock face.
+The data visualization follows the same temporal logic. Since `runningTotal` uses the same `secondsElapsed` variable as the rotation, the numbers and the needles are perfectly tethered. As the needle completes its 60-second circuit, the numbers climb at the exact calibrated `rate` defined in the `stats` array.
+Easy said: A visual rotation and data accumulation are locked to the same 1:1 real-world second.
+
 ## Lesson 04 - Drawing Machines - Generative systems as drawing tools
 
 ### Circle-Drawing tool
