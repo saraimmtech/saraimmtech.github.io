@@ -229,30 +229,40 @@ What’s really cool here is the conditional randomness. For example,`numEyeball
 
 ## Lesson 07 - Pixels - Pixels as material + Advanced pixel transformations
 
-### Pixels
+In this lesson, we were challenged to treat pixels as raw material—basically using them as digital "building blocks" to create an original design.
 
-What if pixels had different shapes?
-What if they were arranged differently than in a grid?
-What if they could be represented in a completely different form?
-How can pixel data (color, brightness, position) drive visual generation?
+### From Paper Scrabs to Code
 
-For the pixel project I got the idea from an influencer on instagram. First step is using a picture of someone you would hang on your wall.
-
-<img src="MediaPNG/Meryl.png" width="400"/>
-
-Third and fourth step is rearange the pixels.
+For the pixel project, I got the idea from an influencer on Instagram. My first step was picking a picture of someone you’d actually want to hang on your wall. I think I got a little carried away being creative with pencil and paper again.
 
 <img src="MediaPNG/Meryl(2).png" width="400"/>
 
-For the digital version I wanted to change the width of the image but at the begining I had the wrong idea of doing so. I was deviding the image through 4 (marked orange), or so i thought. Actually i was only dividing the canvas. So the canvas was getting smaller but not the image itself that's why in the end you can see the top right corner the grey background of the tiger.
+Even though it got a bit messy with all the glue, it had that organic "something" that only analog art has. There was a time when I wouldn’t have been happy with this outcome, but because it felt so good to build something using nothing but my hands, I was actually pretty pleased with it.
+
+**Digital Growing Pains**
+
+When it came to the digital version, I wanted to adjust the width of the image, but I started out with the wrong approach. I tried dividing the image by four (marked in orange)—or at least, that’s what I thought I was doing. In reality, I was only shrinking the canvas, not the image itself. That’s why you can see the grey background of the tiger getting cut off in the top right corner.
+
 
 <img src="MediaPNG/ImageSizeWrong.png" width="400"/>
 
-In the second attempt i made the canvas smaller and to guarantee that the image always fits the canva we add this part of code: image(img, 0, 0, width, height);
+In my second attempt, I fixed this by making the canvas smaller and adding a specific line of code to guarantee the image always fits the workspace perfectly:
+
+`image(img, 0, 0, width, height);`
 
 <img src="MediaPNG/ImageSizeRight.png" width="400"/>
 
-After that I wanted 
+It was a good reminder that in code, you have to be very specific about whether you are resizing the "frame" or the "picture" itself.
+
+To make the "pixels" round, I needed to change how the image is rendered inside the loop. Instead of drawing the raw rectangular `image()` tile, I used the `get()` function to grab the color of that specific area and use it to fill an `ellipse()`.
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/tuPOCAB1Q" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+Instead of drawing the image tile, we use `img.get(sx, sy)` to pick up the color at that coordinate.
+
+-	`ellipse()` instead of `image()`: We draw a circle filled with the sampled color.
+-	 Added `background(0)`because, unlike the rectangular tiles, circles leave small gaps between them where the canvas background shows through.
+
 
 # Project Idea
 
