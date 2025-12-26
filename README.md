@@ -20,13 +20,37 @@ I’ve always been fascinated by art that begins with one simple piece and, thro
   
 ## Lesson 02 - Grids & Iterative Patterns - Structured generative systems
 
-**How did your initial paper sketches influence your digital pattern? Did anything change in translation?**
+My first attempt was inspired by a chessboard, using a simple function to build a grid of 8 columns and 8 rows. This served as the foundation for the logic I’d use later on.
 
-I use the sketche as guidance and motivation to stay focused on the goal I had in mind at the beginning. Can be frustrating when I set the goals to high which don't add to my knowledge yet.
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/gHh0xZ56N" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-**What strategies did you use to balance order and randomness in your grid or pattern?**
+The code calculates a `cellSize` by dividing the workspace into 8 columns and 8 rows. Using "nested loops" (a loop inside a loop), it systematically moves across every single "plot" on the grid, just like you’d mark out a piece of timber for repeatable cuts.
 
-Your tiles are not turning at the same time because each tile has a different rotation speed.
+The line `if((i + j) % 2 == 0)` acts as a filter. It uses a bit of math to check if a cell is "even" or "odd." This ensures the code only draws on every other square, creating that alternating checkerboard pattern automatically rather than you having to pick each spot by hand.
+
+This is a vital concept in creative coding.
+- `push()`saves the current state of the canvas.
+- `translate()` and `rotate()` move the "tools" to the center of a specific square.
+- `pop()`resets everything back to the original corner. It’s exactly like using a jig in woodworking: you set it up to do one specific task in one specific spot, then remove it so you can move on to the next piece without your previous measurements interfering.
+
+Instead of a static image, the code uses`frameCount` and `angle`.
+
+- `frameCount` acts like a clock that never stops, causing the lines to spin.
+- Adding `(i + j)` to the angle ensures that not every line spins at the exact same time. This creates a "staggered" or wave-like motion across the grid, adding that layer of complexity you mentioned admiring in Jared Tarbell’s work.
+
+Building on what I learned in the first lesson, the next sketch takes the idea of a simple grid and makes it feel alive. It’s less about a static image and more about creating a "system" that moves on its own.
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/yL7A0Io8S" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+Just like the first experiment, this starts with a 10x10 grid. The code calculates a`centerX` and `centerY` for every single cell. This is important because it gives each square its own "anchor point." By defining these centers first, I can move, spin, or scale each square individually without them drifting out of their lane. It keeps the chaos organized.
+
+Instead of just drawing squares, I’m using a `sin()` wave combined with the`frameCount` to control their size.
+- The Scale: The `map()` function translates that mathematical wave into a `scaleFactor`, making the squares grow and shrink between 80% and 120% of their original size.
+- The Offset: By adding `(x + y)` to the math, the squares don't pulse all at once. It creates a ripple effect that travels diagonally across the screen. It’s a perfect example of how adding one tiny variable to a simple rule can make a rigid grid feel organic and fluid.
+
+
+--------
+
 
 
 `let angle = frameCount * 0.01 * (x + y); `
@@ -47,17 +71,6 @@ In the first Canva i played around with shapes and turning options. In the secon
 <iframe src="https://editor.p5js.org/trisaratops2.0/full/4rfxuTqXl" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
 
-**How did you approach making your pattern “infinite” or seamlessly tileable? What challenges did you face?**
-
-Since draw() runs automatically at around 60 frames per second, the sketch constantly refreshes, which allows any rule or transformation to unfold endlessly over time.
-
-{% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/yL7A0Io8S" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
-
-{% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/gHh0xZ56N" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
-
-**How did working with code change your perception of artistic control compared to analog methods?**
 
 Working with code made me rethink what artistic control actually means. In analog methods, every mark is physical and irreversible—changes are slow, and mistakes become part of the artwork. That limitation creates a certain intimacy with the material; you can “feel” the artist in every imperfection, and randomness often emerges naturally through the process.
 
