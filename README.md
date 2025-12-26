@@ -215,9 +215,9 @@ My first attend was rather simple its is a simple face created like a little chi
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-At the top of the code, I defined a set of "blueprint" variables like`eyeSize`, `irisSize`, and `eyeSpacing`. By doing this instead of just hard-coding numbers, I’ve created a system where I can change the entire character of the face just by tweaking a few values. It’s like having a master control panel for the face’s proportions. For example, if I change the `eyeSpacing`, both eyes move together, maintaining their symmetry automatically.
+At the top of the code, I defined a set of "blueprint" variables like `eyeSize`,  `irisSize`, and `eyeSpacing`. By doing this instead of just hard-coding numbers, I’ve created a system where I can change the entire character of the face just by tweaking a few values. It’s like having a master control panel for the face’s proportions. For example, if I change the `eyeSpacing`, both eyes move together, maintaining their symmetry automatically.
 
-For the hair, I went back to the`for`loop logic I used in my grids. Instead of drawing every strand by hand, I wrote a loop that repeats a `bezier()` curve ten times. A bezier curve is basically a line that "bends" between two points—it’s much more fluid and natural-looking than a straight line, which is perfect for representing hair.
+For the hair, I went back to the `for`loop logic I used in my grids. Instead of drawing every strand by hand, I wrote a loop that repeats a `bezier()` curve ten times. A bezier curve is basically a line that "bends" between two points—it’s much more fluid and natural-looking than a straight line, which is perfect for representing hair.
 
 The next sketch takes the "digital anatomy" idea a step further by introducing Generative Design. Instead of me manually tweaking the values to change the face, I’ve built a system that does it for me at the click of a button. It’s all about creating a set of rules and then letting the computer "roll the dice."
 
