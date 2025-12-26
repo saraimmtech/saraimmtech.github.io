@@ -138,7 +138,7 @@ Each click adds a new circle, building up a layered field of colors — a simple
 ### Etch A Sketch
 
 {% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="800" frameborder="no"></iframe> {% endraw %}
+<iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="540" frameborder="no"></iframe> {% endraw %}
 
 This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls.
 
