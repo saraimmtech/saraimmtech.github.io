@@ -45,7 +45,7 @@ I use the sketche as guidance and motivation to stay focused on the goal I had i
 Your tiles are not turning at the same time because each tile has a different rotation speed.
 
 
-` let angle = frameCount * 0.01 * (x + y); `
+`let angle = frameCount * 0.01 * (x + y); `
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe>
 {% endraw %}
@@ -149,7 +149,7 @@ This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buf
 
 **Offscreen Drawing Buffer**
 
-` let buffer; `
+`let buffer; `
 
 The buffer represents the Etch A Sketch “screen”. This allows the frame and interface to redraw each frame without deleting the elements that have already been drawn.
 
@@ -169,7 +169,7 @@ This creates continuous strokes instead of individual points, which enhances the
 
 **Button object: Rotary encoder as control signal**
 
-` function Knob(x, y, r, orientation) `
+`function Knob(x, y, r, orientation) `
 
 Each button is a small object with:
 
@@ -197,7 +197,7 @@ A simple line indicator shows the alignment, making the rotation readable withou
 
 This allows the button to be clicked directly using distance-based hit detection. After grabbing, the angle of the button is updated as follows:
 
-` atan2(mouseY - knob.y, mouseX - knob.x) `
+`atan2(mouseY - knob.y, mouseX - knob.x) `
 
 This converts circular mouse movements into angular rotations, maintaining intuitive control.
 
@@ -225,7 +225,7 @@ The pen is restricted to the buffer boundaries, preserving the edges of the “s
 
 **Drawing as Accumulation**
 
-` buffer.line(prevStylus.x, prevStylus.y, stylus.x, stylus.y); `
+`buffer.line(prevStylus.x, prevStylus.y, stylus.x, stylus.y); `
 
 Every frame leaves a permanent mark. There is no undo button—only delete. This creates a subtle pressure toward intentionality and patience, qualities that also characterize analog drawing tools.
 
