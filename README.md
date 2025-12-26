@@ -207,16 +207,25 @@ This sketch shows how relatively simple relationships—angular change, linear m
 
 ## Lesson 06 - Faces / Parametric Generators - Parametric design through faces
 
+To be honest, I’ve never really been a fan of portraits, so focusing on faces wasn't exactly my favorite topic. Whether it’s a detailed sketch or something abstract made of shapes, it just never clicked with me the way geometric systems do. Because of that, I’m keeping this chapter short.
+
 ### Faces
 
-This week we learend how to write a program that generates parametric faces and learned about the difference between **Continuous parameters** (smooth transitions) and **Discrete parameters** (distinct options). 
+My first attend was rather simple its is a simple face created like a little child is told to draw a face. It looks like a tomato with a few hair and a face.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-### Reflection
+At the top of the code, I defined a set of "blueprint" variables like`eyeSize`, `irisSize`, and `eyeSpacing`. By doing this instead of just hard-coding numbers, I’ve created a system where I can change the entire character of the face just by tweaking a few values. It’s like having a master control panel for the face’s proportions. For example, if I change the `eyeSpacing`, both eyes move together, maintaining their symmetry automatically.
 
-- How is your machine “expressive” rather than “functional”?
-- What limitations or constraints shaped your outcome?
+For the hair, I went back to the`for`loop logic I used in my grids. Instead of drawing every strand by hand, I wrote a loop that repeats a `bezier()` curve ten times. A bezier curve is basically a line that "bends" between two points—it’s much more fluid and natural-looking than a straight line, which is perfect for representing hair.
+
+The next sketch takes the "digital anatomy" idea a step further by introducing Generative Design. Instead of me manually tweaking the values to change the face, I’ve built a system that does it for me at the click of a button. It’s all about creating a set of rules and then letting the computer "roll the dice."
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/ndnxCk6pG" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+This is the "brain" of the sketch. I’ve defined several variables—like faceWidth, eyeSize, and even `skinColor`—but I don't give them fixed numbers. Instead, I use the `random()` function to pick a value within a specific range every time the button is pressed.
+
+What’s really cool here is the conditional randomness. For example,`numEyeballs` has a 20% chance of being 1 and an 80% chance of being 2. It’s not just random; it’s weighted randomness, allowing for "mutations" like a cyclops to appear every now and then. This is exactly what Jared Tarbell meant about the creator being surprised by their own program.
 
 ## Lesson 07 - Pixels - Pixels as material + Advanced pixel transformations
 
