@@ -137,61 +137,111 @@ Each click adds a new circle, building up a layered field of colors — a simple
 
 ### Etch A Sketch
 
+I can't really say why or how, but while developing the circle drawing tool, I was reminded of another drawing tool. I couldn't remember what it was called, just the feeling of using it. I drew a quick sketch in Procreate, hoping someone would recognize it.
 
-{% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="600" frameborder="no"></iframe> {% endraw %}
+<img src="MediaPNG/EtchASketch.png" width="500" />
+
+Finally, someone did: it was an Etch A Sketch. The toy was invented in the late 1950s by a French electrician. The idea came to him by watching pencil strokes being transferred through plastic sheets on a factory wall. Inside the glass screen is a thin layer of aluminum powder. When the knobs are turned, a hidden pointer (pen) moves across the surface and scratches away the powder. This process leaves dark lines where the powder has been removed.
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="600" frameborder="no"></iframe> {% endraw %}
 
 This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls.
 
-**Top-level data**
-- *buffer* — *createGraphics(...)* offscreen canvas where all drawn lines go (so lines persist and can be cleared separately).
-- *stylus* / *prevStylus* — current and previous pen positions inside the buffer.
-- *leftKnob*, *rightKnob* — two Knob objects representing the physical knobs; left controls horizontal, right vertical.
-- *lastAngles* — stores previous knob angles so movement is computed from angle differences.
-- *speedFactor* — scales how much knob rotation translates to stylus movement (higher = faster pointer).
-  
-**Knob object**
-- *Knob(x,y,r,orientation)* stores position, radius, visual *angle*, *grabbed* state and *orientation* (stored but not functionally used in this code).
-- *draw()* — draws a round knob with a small indicator line rotated by *angle*.
-- *hitTest(mx,my)* — checks if mouse is inside the knob circle.
-  
-**Setup**
-- Canvas and buffer created, buffer cleared with *resetBuffer()*.
-- Stylus starts centered in the buffer.
-- Knobs positioned at bottom left / bottom right. *angleMode(RADIANS)* is used.
-  
-**Draw loop**
-- Draws the red Etch A Sketch frame and places the *buffer* image inside it (translated by *translate(40,40)*).
-- Draws a tiny indicator for current stylus position on top of the buffer.
-- Draws knob UI and labels.
-- Calls *applyKnobMovement()* every frame to convert knob rotations to movement on the buffer.
-- Handles *shaking* animation: small horizontal wobble, then clears *buffer* after ~30 frames.
-  
-**applyKnobMovement() — the important mapping**
-- Computes angle deltas: *dA_left = leftKnob.angle - lastAngles.left*, same for right.
-- Updates *lastAngles* to current angles.
-- Converts deltas to pixel movement:
-  - *dx = dA_left * (speedFactor * 60)*
-  - *dy = dA_right * (speedFactor * 60)*
-    (so small angle changes move the stylus; 60 is an arbitrary scale factor)
-- Moves *stylus* by *dx, dy*, constraining it inside the buffer bounds.
-- Draws a line on *buffer* from *prevStylus* to *stylus* so the path is etched.
-  
-**User interactions**
-- *mousePressed()* sets *grabbed* for a knob if clicked; stores *lastMouseAngle* (used to make dragging feel relative).
-- *mouseDragged()* updates the grabbed knob’s *angle* using *atan2(mouseY - knob.y, mouseX - knob.x)* so turning the mouse around a knob rotates it.
-- *mouseReleased()* drops knobs.
-- *keyPressed()* provides keyboard control: arrow/WASD rotate the left/right knobs; spacebar triggers *startShake()* to clear.
-- *startShake()* starts the shake animation and eventually calls *resetBuffer()* to wipe the drawing.
-  
-**Other small details**
-- *resetBuffer()* fills the buffer with a gray background (clears the drawing).
-- Stroke caps/joins set for smoother lines.
-- *orientation* on the *Knob* is present but not used — both knobs affect movement via their angles (the left maps to *dx*, the right to *dy*).
-- Angles are in radians; movement comes from change in angle, not absolute angle.
+**Offscreen Drawing Buffer**
 
-**Summary (one-liner)**
-It simulates an Etch A Sketch by converting knob rotation deltas into x/y stylus movement that draws persistent lines on an offscreen buffer; knobs are interactive with mouse + keyboard, and shaking clears the buffer.
+` let buffer; `
+
+The buffer represents the Etch A Sketch “screen”. This allows the frame and interface to redraw each frame without deleting the elements that have already been drawn.
+
+**Stylus State**
+
+`let stylus; `
+
+`let prevStylus; `
+
+The pen is an abstract point that represents the current position of the internal drawing mechanism. Each frame:
+
+  - The previous position is saved.
+  - The new position is calculated.
+  - A line is drawn between the two.
+
+This creates continuous strokes instead of individual points, which enhances the mechanical aesthetics of plotting.
+
+**Button object: Rotary encoder as control signal**
+
+` function Knob(x, y, r, orientation) `
+
+Each button is a small object with:
+
+  - A position (x, y)
+  - A radius (r)
+  - A rotation angle
+  - A grab status for tracking interaction
+
+The button does not move the pen directly. Instead, changes in its angle are interpreted as movement signals.
+
+**Visual Representation**
+
+```
+Knob.prototype.draw = function() {
+  rotate(this.angle);
+  ellipse(0, 0, this.r*2);
+  line(0, -this.r*0.5, 0, -this.r*0.9);
+};
+```
+A simple line indicator shows the alignment, making the rotation readable without numerical feedback.
+
+**Interaction Logic**
+
+`Knob.prototype.hitTest = function(mx, my) `
+
+This allows the button to be clicked directly using distance-based hit detection. After grabbing, the angle of the button is updated as follows:
+
+` atan2(mouseY - knob.y, mouseX - knob.x) `
+
+This converts circular mouse movements into angular rotations, maintaining intuitive control.
+
+**Translating Rotation into Drawing**
+
+The most important conceptual step takes place in `applyKnobMovement()`:
+
+`let dA_left  = leftKnob.angle  - lastAngles.left; `
+
+`let dA_right = rightKnob.angle - lastAngles.right;`
+
+Instead of using absolute angles, the system measures the angular deviation per image. These deviations are then converted into linear movements:
+
+`let dx = dA_left  * (speedFactor * 60); `
+
+`let dy = dA_right * (speedFactor * 60); `
+
+This design decision:
+
+  - Prevents sudden jumps.
+  - Promotes slow, continuous interaction.
+  - Imitates the inertia of physical mechanisms.
+
+The pen is restricted to the buffer boundaries, preserving the edges of the “screen.”
+
+** Drawing as Accumulation**
+
+` buffer.line(prevStylus.x, prevStylus.y, stylus.x, stylus.y); `
+
+Every frame leaves a permanent mark. There is no undo button—only delete. This creates a subtle pressure toward intentionality and patience, qualities that also characterize analog drawing tools.
+
+** Frame and Interface Design**
+
+The surrounding red frame is purely graphical in nature, but plays an important role in perception: it contextualizes the interaction as an object rather than a canvas.
+
+`rect(0, 0, width, height, 28); `
+
+`text('ETCH A SKETCH', width/2, 28); `
+
+This design reinforces the metaphor and encourages the user to adopt a playful, exploratory mindset.
+
+**Reflection**
+
+This system demonstrates how simple mathematical relationships—angular change, linear mapping, and constraint—can produce rich generative behavior when paired with a strong interaction metaphor.
 
 ## Lesson 06 - Faces / Parametric Generators - Parametric design through faces
 
