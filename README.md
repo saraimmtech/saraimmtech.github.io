@@ -83,7 +83,7 @@ I set it up so that as the time increases, the arc grows from -90 degrees (the t
 I’ve always been fascinated by how much actually happens in the world every single second, and I wanted to try and capture that scale within my clock. I used the website everysecond.io as a reference—it visualizes things like a whale’s heartbeat, Apple’s marketing spend, or the sheer amount of plastic entering the ocean.
 The count starts the moment the page is refreshed. Since I’m also studying UI and UX, I have to admit it’s a bit of a "fail" on my part that I forgot to include a text display showing how many minutes have actually passed. In this system, one full 360-degree rotation equals one minute, and the data counts up second by second.
 
-{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/vN-LeUx2A" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/vN-LeUx2A" width="80%" height="150" frameborder="no"></iframe> {% endraw %}
 
 The 60-Second Cycle A full 360∘ turn in p5.js is represented as `TWO_PI`. To ensure the needle completes this turn in exactly 60 seconds, the rotation is defined by the ratio of time passed against the target duration:
 
