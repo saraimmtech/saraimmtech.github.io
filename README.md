@@ -417,3 +417,7 @@ My visualization is grounded in the philosophy of Data Humanism, championed by d
 In the first prototype I was trying visualize that in a simple way.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/iqbApEpX_" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+In the second attend it looked already more like the reference
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/xx4RtjXxb" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
