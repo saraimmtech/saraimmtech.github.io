@@ -145,7 +145,7 @@ Finally, someone did: it was an Etch A Sketch. The toy was invented in the late 
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/-WTDxlDWW" width="100%" height="600" frameborder="no"></iframe> {% endraw %}
 
-This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls.
+This is an Etch A Sketch-style sketch built with p5.js. It uses an offscreen buffer as the “screen” that keeps the etched lines persistent while the main canvas draws the frame and controls. You can operate it either with the mouse by interacting with the knobs, or using the keyboard: W and S control up and down movement, while A and D control left and right movement.
 
 **Offscreen Drawing Buffer**
 
