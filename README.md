@@ -67,35 +67,16 @@ Since the `draw()` function refreshes about 60 times per second, the sketch is c
 
 ## Lesson 03 - Clock / Time - Generative representation of time
 
-### Clock
+In today’s lesson we were building a device visualizing the passing of time. To have an idea how I want to build my clock I drew a quick sketch to define the key elements of the goal I wanted to achieve
 
-**How does your clock represent time differently from a real one?**
+### Clock
 
 Unlike a normal clock with fixed hands moving around a face, this design uses colored arcs that grow and shrink over time. Instead of hands rotating, each ring fills up as seconds, minutes, and hours pass — so time feels like expanding waves rather than ticking motion. The pulsing center and soft transitions make it feel alive and continuous instead of mechanical.
 
-**What does cyclical vs linear mean in your design?**
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-The design is cyclical because time loops visually — when seconds, minutes, or hours reset, their arcs start over smoothly, showing the repeating rhythm of time. There’s no straight path or endpoint. A linear design would show time as a timeline or progress bar moving in one direction. Here, everything circles back, symbolizing time as an ongoing cycle rather than a straight line.
-
-{% raw %}
-<iframe src="https://editor.p5js.org/trisaratops2.0/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
-
-
-This code uses the current computer time to draw animated, circular arcs that represent hours, minutes, and seconds.
-
-- setup() makes a pink canvas and sets drawing modes (center alignment, degrees for angles).
-- draw() runs every frame, updates the clock, and redraws everything.
-  - It gets the current hour, minute, and second using p5.js time functions.
-  - The translate(width/2, height/2) moves the origin to the canvas center.
-  - Then three concentric arcs show time progress:
-    - Outer arc → seconds (thin red line)
-    - Middle arc → minutes (blue line)
-    - Inner arc → hours (greenish line)
-  - The arcs sweep clockwise using map() to convert time values to angles.
-  - A small dark pulsing circle in the center represents milliseconds (beats once per second).
-  - Digital time is displayed below the arcs in white text with AM/PM formatting.
-  - Below that, the date (day/month/year) is shown subtly.
-- mousePressed() saves the canvas as a PNG snapshot when you click.
+The most important part of this code is the `map()` function. Since time naturally comes in segments—60 seconds, 60 minutes, 12 hours—I had to find a way to translate those numbers into degrees to get the arcs to draw themselves around a circle.
+I set it up so that as the time increases, the arc grows from -90 degrees (the top of the circle) all the way to 270 degrees. To make the movement feel fluid rather than jumpy, I added a bit of extra math, like `mn + sc / 60.0`. This ensures the minute hand doesn’t just snap to the next position every minute; instead, it creeps forward slightly with every second, making the system feel much more organic. To top it off, I used `millis()`to create a center pulse—a tiny "heartbeat" that keeps the sketch moving even when the hour hand seems still.
 
 ## Lesson 04 - Drawing Machines - Generative systems as drawing tools
 
