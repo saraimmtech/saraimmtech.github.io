@@ -263,8 +263,11 @@ Instead of drawing the image tile, we use `img.get(sx, sy)` to pick up the color
 -	`ellipse()` instead of `image()`: We draw a circle filled with the sampled color.
 -	 Added `background(0)`because, unlike the rectangular tiles, circles leave small gaps between them where the canvas background shows through.
 
+---
 
 # Project Idea
+
+In this part of the Journal i document 
 
 ## Mind Garden
 
