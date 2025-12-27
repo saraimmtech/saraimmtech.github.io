@@ -265,56 +265,60 @@ Instead of drawing the image tile, we use `img.get(sx, sy)` to pick up the color
 
 ---
 
-# Project Idea
+# Mind Garden
 
-In this part of the Journal i document 
+For my semester project, I decided to dive deeper into **Lesson 04 - Drawing Machines**. I wanted to see how I could move beyond simple shapes and create a generative system that actually acts as a tool for expression.
 
-## Mind Garden
+**The Concept**
 
-**Concept**
+My starting point was the idea of a digital emotion diary—an interactive visualization where feelings take on a physical form. The goal is for a user to type in a single word describing how they feel, and the system grows a "plant" based on the meaning of that word. For example, "calm" might create smooth, blue waves, while "angry" would trigger sharp, red spikes and chaotic movement.
 
-An interactive visualization of emotions. Users type one word describing how they feel, and the system grows a visual form based on its semantic meaning — e.g., “calm” creates smooth blue waves, “angry” triggers red spikes and chaotic movement.
+**How it works:**
 
-**Interaction**
-- Text input = seed word
-- Algorithm translates sentiment → color, form, and motion rules
-- Over time, the canvas becomes a garden of emotions from the users
+•	**Text input**: Acts as the "seed" for the visualization.
+•	**The Algorithm**: Translates that sentiment into specific rules for color, form, and motion.
+•	The Outcome: Over time, the canvas becomes a "garden" of emotions contributed by different users.
 
-**Why?**
+**Why this?**
 
-It’s interactive and personal — visualizing emotions is always fascinating, as the outcomes can be surprising and unique each time. I can also imagine this being a fun and creative tool for psychologists to include on their websites, allowing visitors to express their feelings and receive engaging visual feedback.
+I love that this is both interactive and personal. Visualizing emotions is always fascinating because the outcomes are unique every time. I could even see this being a creative tool for psychologists; it would give visitors a way to express feelings and get immediate, engaging visual feedback instead of just staring at a blank text box.
 
-(Sketch of my core idea)
+<img src="MediaPNG/MindGarden.png" width="400"/>
+
+This sketch captures the core mechanic I’m going for. It’s all about that direct link between the user and the screen—you provide the 'seed' via the input bar, and the flower grows out of it in real-time. It’s the first step in turning a static word into a living, generative form.
 
 ## First Prototype
 
-To help me visualize in what i wanna go I started with a simple canvas where i can put in emotions, depending on the word a different "plant" is growing in the canvas.
+To figure out the direction I wanted to take, I started with a basic canvas where I could test the "planting" logic. In this version, you enter an emotion like joy, happy, or anger into the bar and hit enter. The code then triggers the specific "plant" assigned to that word. It’s a simple start, but it’s the first step in seeing how a word can actually grow into a visual structure.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 ### Explanations of key codes
 
-**let plants = [];**
-This array stores all the emotion-plants the user creates.
-Each new word becomes a new instance of the EmotionPlant class.
+`let plants = [];*`
 
-**button.mousePressed(() => addEmotion(input.value()));**
+This array stores all the emotion-plants the user creates. Each new word becomes a new instance of the EmotionPlant class.
+
+`button.mousePressed(() => addEmotion(input.value()));`
+
 Links the button to the emotion-creation system.
 When the user clicks Grow, the word they typed is processed and turned into a plant.
 
-**getMoodScore(word)**
+`getMoodScore(word)`
+
 This function classifies the user’s emotion word into a mood score:
 1 → positive
 0.5 → neutral
 0 → negative
 This single score determines color, shape, and growth behavior.
 
-**plants.push(new EmotionPlant(word, moodScore));**
-Creates a new plant object and adds it to the world.
+`plants.push(new EmotionPlant(word, moodScore));`
+ld.
 Every plant is independent and grows each animation frame.
 
 **class EmotionPlant { ... }**
-Encapsulates all the logic for representing emotions visually.
+Encapsulates all th`class EmotionPlant { ... }`
+ons visually.
 Each plant stores:
 where it appears
 its color
