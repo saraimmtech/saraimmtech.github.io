@@ -293,11 +293,12 @@ To figure out the direction I wanted to take, I started with a basic canvas wher
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-### Explanations of key codes
+**Explanations of key codes**
 
-`let plants = [];*`
+`let plants = [];`
 
-This array stores all the emotion-plants the user creates. Each new word becomes a new instance of the EmotionPlant class.
+This array stores all the emotion-plants the user creates.
+Each new word becomes a new instance of the EmotionPlant class.
 
 `button.mousePressed(() => addEmotion(input.value()));`
 
@@ -313,26 +314,29 @@ This function classifies the user’s emotion word into a mood score:
 This single score determines color, shape, and growth behavior.
 
 `plants.push(new EmotionPlant(word, moodScore));`
-ld.
+
+Creates a new plant object and adds it to the world.
 Every plant is independent and grows each animation frame.
 
-**class EmotionPlant { ... }**
-Encapsulates all th`class EmotionPlant { ... }`
-ons visually.
+`class EmotionPlant { ... }`
+
+Encapsulates all the logic for representing emotions visually.
 Each plant stores:
 where it appears
 its color
 its growth size
 its shape behavior
 
-**getColor()**
+`getColor()`
+
 Maps emotion intensity to color:
 red → negative
 yellow → neutral
 blue → positive
 Color becomes a visual cue for emotional tone.
 
-**grow()**
+`grow()`
+
 Runs every frame and determines:
 how the plant is drawn (chaotic / balanced / smooth)
 how fast and in what direction it grows
