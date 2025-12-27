@@ -491,6 +491,9 @@ In the second attend it looked already more like the reference
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/xx4RtjXxb" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
+- Each entry is handled by the `FeedbackGlyph` class, which converts sentiment into a unique visual signature. I used the length of the user’s text to determine the "weight" of the icon: `let textFactor = min(floor(text.length / 10), 4);` `this.numMarks = this.params.baseMarks + textFactor;`. The more a user writes, the more complex the internal marks become, giving physical density to their effort.
+- The ledger doesn't just count characters; it listens for keywords. Using `this.params.keyword`, the code identifies high-intensity words like "late" or "bug." When detected, `this.hasDistortion` is triggered, adding a visual "shiver" to the lines: `let dist = this.hasDistortion ? sin(frameCount * 5 + angle) * 3 : 0;`
+
 ### 03
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/ur0LAriT6" width="100%" height="550" frameborder="no"></iframe> {% endraw %}
