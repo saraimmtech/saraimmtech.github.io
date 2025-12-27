@@ -363,8 +363,6 @@ This means "happy" (0.95) correctly becomes "not happy" (0.05), preventing the s
 
 In this iteration, the "Mind Garden" has evolved into a much more expressive system. I’ve moved beyond simple "positive or negative" labels and created a visual language where every emotion has its own color, shape, and even its own way of moving.
 
-{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/lzCFzuMod" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
-
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/XbXVN_bI6" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 Here are the key elements that make this second prototype work:
@@ -388,6 +386,7 @@ const EMOTION_CATEGORY = {
 ```
 
 2. Advanced Sentiment Parsing
+
 The `getMood` function is where the real "thinking" happens. It doesn't just look for words; it cleans the text and looks for modifiers.
 
   - Intensifiers & Downtoners: It checks if you said "very" or "slightly" and adjusts the score.
