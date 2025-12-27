@@ -476,7 +476,7 @@ My visualization is grounded in the philosophy of Data Humanism, championed by d
 
 ## Iterations
 
- (sketch of my core idea)
+<img src="MediaPNG/FeedbackMachine.png" width="400"/>
 
 ###  01
 
@@ -487,3 +487,62 @@ In the first prototype I was trying visualize that in a simple way.
 In the second attend it looked already more like the reference
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/xx4RtjXxb" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+### 03
+
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/ur0LAriT6" height="450" frameborder="no"></iframe> {% endraw %}
+
+Here are the key elements of how this system processes "human" data:
+
+**1. The Emotion & Semantic Profiles**
+
+The code uses two different "layers" of data to decide how a feedback shape looks.
+
+  - This is the baseline. Before typing, the user selects a category (like "frustrated" or "efficient"). This sets the primary color, jitter (shaking), and sharpness of the shape.
+  - This is where the specific words come in. I’ve defined a list of `SEMANTIC_EFFECTS`. If a user types "slow," the shape gets more "drag" (meaning it moves differently); if they type "confusing," the shape gets more "distortion."
+
+```js
+const SEMANTIC_EFFECTS = {
+  late: { drag: 1.2, distortion: 1.1 },
+  slow: { drag: 1.4, distortion: 0.6 },
+  sleek: { drag: 0.2, distortion: 0.1 }
+};
+```
+
+**2. The Feedback Analyzer (`analyzeText`)**
+
+Inside the FeedbackForm class, I built a small engine that scans the user’s sentence. It’s not just looking for the mood anymore; it’s looking for specific keywords that alter the physics of the object. It loops through the words, and if it finds a match in my list, it adds to the drag and distortion values. This makes the final visual a direct reflection of the specific vocabulary the user chose.
+
+```js
+analyzeText(txt) {
+  let result = { drag: 0.4, distortion: 0.4 };
+  let words = txt.toLowerCase().split(" ");
+  for (let w of words) {
+    if (SEMANTIC_EFFECTS[w]) {
+      result.drag += SEMANTIC_EFFECTS[w].drag;
+      result.distortion += SEMANTIC_EFFECTS[w].distortion;
+    }
+  }
+  return result;
+}
+```
+
+**3. Procedural Shape Generation**
+
+The most interesting visual part is how the shapes are drawn using beginShape(). The number of points on the shape and how much they "pulse" or "spike" is determined by that semantic distortion we calculated.
+  - Sharpness creates jagged edges (good for frustration).
+  - Distortion increases the complexity of the pulse.
+  - Drag affects how much the shape sinks or floats using a sin() wave.
+
+```js
+let points = int(8 + this.semantic.distortion * 6);
+for (let i = 0; i < points; i++) {
+  let r = this.size + sin(angle * this.baseEmotion.sharpness + this.t * 2) * this.semantic.distortion * 10;
+  vertex(cos(angle) * r, sin(angle) * r);
+}
+```
+
+**4. Interactive UI**
+
+Since I'm interested in UI/UX, I added a simple button system at the top. It allows the user to toggle between emotions before they hit Enter. It’s a clean way to bridge the gap between a standard input form and a generative art piece.
+
