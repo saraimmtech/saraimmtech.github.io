@@ -48,7 +48,6 @@ Instead of just drawing squares, I’m using a `sin()` wave combined with the`fr
 - The `map()` function translates that mathematical wave into a `scaleFactor`, making the squares grow and shrink between 80% and 120% of their original size.
 - By adding `(x + y)` to the math, the squares don't pulse all at once. It creates a ripple effect that travels diagonally across the screen. It’s a perfect example of how adding one tiny variable to a simple rule can make a rigid grid feel organic and fluid.
 
-
 After experimenting with rotating lines and pulsing squares, I wanted to combine the two ideas into turning tiles. In the process, I stumbled onto something pretty interesting.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/VInFjYFkg" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
@@ -69,8 +68,6 @@ Since the `draw()` function refreshes about 60 times per second, the sketch is c
 
 In today’s lesson we were building a device visualizing the passing of time. To have an idea how I want to build my clock I drew a quick sketch to define the key elements of the goal I wanted to achieve
 
-### Clock
-
 Unlike a normal clock with fixed hands moving around a face, this design uses colored arcs that grow and shrink over time. Instead of hands rotating, each ring fills up as seconds, minutes, and hours pass — so time feels like expanding waves rather than ticking motion. The pulsing center and soft transitions make it feel alive and continuous instead of mechanical.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/Acucskcub" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
@@ -78,7 +75,7 @@ Unlike a normal clock with fixed hands moving around a face, this design uses co
 The most important part of this code is the `map()` function. Since time naturally comes in segments—60 seconds, 60 minutes, 12 hours—I had to find a way to translate those numbers into degrees to get the arcs to draw themselves around a circle.
 I set it up so that as the time increases, the arc grows from -90 degrees (the top of the circle) all the way to 270 degrees. To make the movement feel fluid rather than jumpy, I added a bit of extra math, like `mn + sc / 60.0`. This ensures the minute hand doesn’t just snap to the next position every minute; instead, it creeps forward slightly with every second, making the system feel much more organic. To top it off, I used `millis()`to create a center pulse—a tiny "heartbeat" that keeps the sketch moving even when the hour hand seems still.
 
----
+### Only a Second
 
 I’ve always been fascinated by how much actually happens in the world every single second, and I wanted to try and capture that scale within my clock. I used the website everysecond.io as a reference—it visualizes things like a whale’s heartbeat, Apple’s marketing spend, or the sheer amount of plastic entering the ocean.
 The count starts the moment the page is refreshed. Since I’m also studying UI and UX, I have to admit it’s a bit of a "fail" on my part that I forgot to include a text display showing how many minutes have actually passed. In this system, one full 360-degree rotation equals one minute, and the data counts up second by second.
@@ -113,8 +110,6 @@ Even though I’m the one choosing where the circles go, I’ve left some of the
 -	I set the colors to pull from a random range of RGB values with a bit of transparency (200).
   
 It’s a mix of my own intent—clicking exactly where I want—and the computer’s ability to add those "surprises".
-
----
 
 ### Etch A Sketch
 
@@ -210,8 +205,6 @@ This sketch shows how relatively simple relationships—angular change, linear m
 
 To be honest, I’ve never really been a fan of portraits, so focusing on faces wasn't exactly my favorite topic. Whether it’s a detailed sketch or something abstract made of shapes, it just never clicked with me the way geometric systems do. Because of that, I’m keeping this chapter short.
 
-### Faces
-
 My first attend was rather simple its is a simple face created like a little child is told to draw a face. It looks like a tomato with a few hair and a face.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/67_o7XVZZ" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
@@ -243,7 +236,6 @@ Even though it got a bit messy with all the glue, it had that organic "something
 **Digital Growing Pains**
 
 When it came to the digital version, I wanted to adjust the width of the image, but I started out with the wrong approach. I tried dividing the image by four (marked in orange)—or at least, that’s what I thought I was doing. In reality, I was only shrinking the canvas, not the image itself. That’s why you can see the grey background of the tiger getting cut off in the top right corner.
-
 
 <img src="MediaPNG/ImageSizeWrong.png" width="400"/>
 
@@ -298,14 +290,14 @@ To figure out the direction I wanted to take, I started with a basic canvas wher
 
 This is the most important part of the "Mind Garden." I’ve created a system that doesn’t just draw shapes, but actually interprets the sentiment of a word.
 
-**1. The Mood Interpreter (`getMoodScore`)**
+**The Mood Interpreter (`getMoodScore`)**
    
 Instead of manually picking colors, I built a library of words categorized as **positive, negative, or neutral**. When a user types a word, the code checks which "bucket" it falls into and assigns it a `moodScore`.
 
 - 	Positive words (like *joy*) get a high score.
 - 	Negative words (like *angry*) get a low score. This score then dictates the "DNA" of the plant—specifically its color and how it behaves on the canvas. It’s a way of letting the user's emotion set the parameters for the algorithm.
 
-**2. Class-Based Growth (`class EmotionPlant`)**
+**Class-Based Growth (`class EmotionPlant`)**
    
 I used a "class" to define what an `EmotionPlant` actually is. Think of this as a master blueprint. Every time a word is entered, a new "object" is born with its own unique position, color, and shape based on the mood score.
 
@@ -322,7 +314,7 @@ After making some adjustments, the current state of the garden looks like this:
 
 The first version was a bit too "black and white," so I’ve been working on making the code understand the nuances of how we actually describe feelings. Instead of just picking out a single word, the code now scans the entire sentence to understand context, intensity, and even contradictions.
 
-1.	I wanted the system to be forgiving. If a user types "stressed" or "stressful," the code doesn't just give up because it's looking for "stress." It uses a two-stage process to find the "root" of the word:
+- I wanted the system to be forgiving. If a user types "stressed" or "stressful," the code doesn't just give up because it's looking for "stress." It uses a two-stage process to find the "root" of the word:
    
 ```js
 // Stage 1: Substring/Includes match
@@ -344,9 +336,9 @@ if (base === null) {
 }
 ```
 
-2. The code doesn’t just look at the emotion; it looks at the words around it. It uses a `modifierFactor` to shift the mood score. If you type "extremely," the score is multiplied, making the plant grow larger or more intense. If you type "a bit," it scales the score back toward the center. It even handles two-word phrases like "kind of" by looking ahead at the next token.
+- The code doesn’t just look at the emotion; it looks at the words around it. It uses a `modifierFactor` to shift the mood score. If you type "extremely," the score is multiplied, making the plant grow larger or more intense. If you type "a bit," it scales the score back toward the center. It even handles two-word phrases like "kind of" by looking ahead at the next token.
    
-3. The code now looks for **NEGATIONS** like "not" or "never." If it finds one of these words within a three-word window of an emotion, it "flips" the score around the neutral point (0.5).
+- The code now looks for **NEGATIONS** like "not" or "never." If it finds one of these words within a three-word window of an emotion, it "flips" the score around the neutral point (0.5).
    
 ```js
 // If negated, flip around neutral point (simple negation)
@@ -357,7 +349,7 @@ if (recentNeg) {
 
 This means "happy" (0.95) correctly becomes "not happy" (0.05), preventing the system from growing a "joy" plant when the user is actually feeling the opposite.
 
-4. All this logic feeds into the `EmotionPlant` class. Each plant is its own object that "remembers" its calculated score and source word. By moving away from a simple "if/then" system, the garden feels much more like it’s actually interpreting what’s on the user’s mind.
+- All this logic feeds into the `EmotionPlant` class. Each plant is its own object that "remembers" its calculated score and source word. By moving away from a simple "if/then" system, the garden feels much more like it’s actually interpreting what’s on the user’s mind.
 
 ### The Third Prototype
 
@@ -367,7 +359,7 @@ In this iteration, the "Mind Garden" has evolved into a much more expressive sys
 
 Here are the key elements that make this second prototype work:
 
-1. The Sentiment Mapping (Categorization)
+**The Sentiment Mapping (Categorization)**
    
 The code now uses two parallel maps to interpret the input. The `EMOTION_MAP` handles the "intensity" (0 to 1), while the `EMOTION_CATEGORY` decides the "type" of plant that grows. This allows the system to distinguish between different types of negative feelings—like the difference between "sadness" and "anger."
 
@@ -385,13 +377,13 @@ const EMOTION_CATEGORY = {
 };
 ```
 
-2. Advanced Sentiment Parsing
+**Advanced Sentiment Parsing**
 
 The `getMood` function is where the real "thinking" happens. It doesn't just look for words; it cleans the text and looks for modifiers.
 
-  - Intensifiers & Downtoners: It checks if you said "very" or "slightly" and adjusts the score.
-  - Negation: It looks for "not" or "never" to flip the emotion entirely.
-  - Fuzzy Matching: It uses a helper function,`findEmotionWord`, to make sure that even if you type a variation of a word, the code can still find the root emotion.
+- Intensifiers & Downtoners: It checks if you said "very" or "slightly" and adjusts the score.
+- Negation: It looks for "not" or "never" to flip the emotion entirely.
+- Fuzzy Matching: It uses a helper function,`findEmotionWord`, to make sure that even if you type a variation of a word, the code can still find the root emotion.
 
 ```js
 function findEmotionWord(w) {
@@ -403,13 +395,13 @@ function findEmotionWord(w) {
 }
 ```
 
-3. Emotion-Specific Physics (`applyMotion`)
+**Emotion-Specific Physics (`applyMotion`)**
    
 This is the part I find most interesting. I wanted the plants to "behave" like the emotions they represent. I added an `applyMotion()` method within the `EmotionPlant` class so they aren't just static shapes:
 
-  - Joy floats gently up and down using a `sin()` wave.
-  - Anger vibrates violently using `random(-1, 1)`.
-  - Sadness has a sinking feeling, drifting slowly downwards.
+- Joy floats gently up and down using a `sin()` wave.
+- Anger vibrates violently using `random(-1, 1)`.
+- Sadness has a sinking feeling, drifting slowly downwards.
 
 ```js
 applyMotion() {
@@ -419,7 +411,7 @@ applyMotion() {
 }
 ```
 
-4. Visual Identity (The Halo and Shapes)
+**Visual Identity (The Halo and Shapes)**
    
 To make the garden feel more atmospheric, I added a `drawHalo()` function. It creates a soft, glowing aura around each plant by layering transparent ellipses.
 The growth logic also uses specific geometry for each mood:
@@ -477,6 +469,8 @@ My visualization is grounded in the philosophy of Data Humanism, championed by d
 
 <img src="MediaPNG/FeedbackMachine.png" width="400"/>
 
+This sketch captures the core mechanic I’m going for.
+
 ###  01
 
 In the first prototype I was trying visualize that in a simple way.
@@ -493,12 +487,12 @@ In the second attend it looked already more like the reference
 
 Here are the key elements of how this system processes "human" data:
 
-**1. The Emotion & Semantic Profiles**
+**The Emotion & Semantic Profiles**
 
 The code uses two different "layers" of data to decide how a feedback shape looks.
 
-  - This is the baseline. Before typing, the user selects a category (like "frustrated" or "efficient"). This sets the primary color, jitter (shaking), and sharpness of the shape.
-  - This is where the specific words come in. I’ve defined a list of `SEMANTIC_EFFECTS`. If a user types "slow," the shape gets more "drag" (meaning it moves differently); if they type "confusing," the shape gets more "distortion."
+- This is the baseline. Before typing, the user selects a category (like "frustrated" or "efficient"). This sets the primary color, jitter (shaking), and sharpness of the shape.
+- This is where the specific words come in. I’ve defined a list of `SEMANTIC_EFFECTS`. If a user types "slow," the shape gets more "drag" (meaning it moves differently); if they type "confusing," the shape gets more "distortion."
 
 ```js
 const SEMANTIC_EFFECTS = {
@@ -508,7 +502,7 @@ const SEMANTIC_EFFECTS = {
 };
 ```
 
-**2. The Feedback Analyzer (`analyzeText`)**
+**The Feedback Analyzer (`analyzeText`)**
 
 Inside the FeedbackForm class, I built a small engine that scans the user’s sentence. It’s not just looking for the mood anymore; it’s looking for specific keywords that alter the physics of the object. It loops through the words, and if it finds a match in my list, it adds to the drag and distortion values. This makes the final visual a direct reflection of the specific vocabulary the user chose.
 
@@ -526,12 +520,13 @@ analyzeText(txt) {
 }
 ```
 
-**3. Procedural Shape Generation**
+**Procedural Shape Generation**
 
 The most interesting visual part is how the shapes are drawn using beginShape(). The number of points on the shape and how much they "pulse" or "spike" is determined by that semantic distortion we calculated.
-  - Sharpness creates jagged edges (good for frustration).
-  - Distortion increases the complexity of the pulse.
-  - Drag affects how much the shape sinks or floats using a sin() wave.
+
+- Sharpness creates jagged edges (good for frustration).
+- Distortion increases the complexity of the pulse.
+- Drag affects how much the shape sinks or floats using a sin() wave.
 
 ```js
 let points = int(8 + this.semantic.distortion * 6);
@@ -541,7 +536,15 @@ for (let i = 0; i < points; i++) {
 }
 ```
 
-**4. Interactive UI**
+**Interactive UI**
 
 Since I'm interested in UI/UX, I added a simple button system at the top. It allows the user to toggle between emotions before they hit Enter. It’s a clean way to bridge the gap between a standard input form and a generative art piece.
+
+---
+
+# Final Reflection
+
+Coming from a carpentry background, I’ve always valued the "feel" of a finished product. This project allowed me to bring that same tactile, human sensibility into the world of UI/UX and code.
+
+I’ve learned that code doesn't have to be cold. By using simple rules and a bit of "weighted randomness," we can create interfaces that feel as organic and complex as the people using them. The "Mind Garden" may have evolved into a "Feedback Machine," but the goal remains the same: making the digital world feel a little more human.
 
