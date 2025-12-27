@@ -45,8 +45,8 @@ Building on what I learned in the first lesson, the next sketch takes the idea o
 Just like the first experiment, this starts with a 10x10 grid. The code calculates a`centerX` and `centerY` for every single cell. This is important because it gives each square its own "anchor point." By defining these centers first, I can move, spin, or scale each square individually without them drifting out of their lane. It keeps the chaos organized.
 
 Instead of just drawing squares, I’m using a `sin()` wave combined with the`frameCount` to control their size.
-- The Scale: The `map()` function translates that mathematical wave into a `scaleFactor`, making the squares grow and shrink between 80% and 120% of their original size.
-- The Offset: By adding `(x + y)` to the math, the squares don't pulse all at once. It creates a ripple effect that travels diagonally across the screen. It’s a perfect example of how adding one tiny variable to a simple rule can make a rigid grid feel organic and fluid.
+- The `map()` function translates that mathematical wave into a `scaleFactor`, making the squares grow and shrink between 80% and 120% of their original size.
+- By adding `(x + y)` to the math, the squares don't pulse all at once. It creates a ripple effect that travels diagonally across the screen. It’s a perfect example of how adding one tiny variable to a simple rule can make a rigid grid feel organic and fluid.
 
 
 After experimenting with rotating lines and pulsing squares, I wanted to combine the two ideas into turning tiles. In the process, I stumbled onto something pretty interesting.
@@ -157,6 +157,7 @@ Knob.prototype.draw = function() {
   line(0, -this.r*0.5, 0, -this.r*0.9);
 };
 ```
+
 A simple line indicator shows the current orientation of each knob. This makes the rotation legible without the need for numerical values or additional interface elements.
 
 **Interaction Logic**
@@ -275,9 +276,9 @@ My starting point was the idea of a digital emotion diary—an interactive visua
 
 **How it works:**
 
-•	**Text input**: Acts as the "seed" for the visualization.
-•	**The Algorithm**: Translates that sentiment into specific rules for color, form, and motion.
-•	The Outcome: Over time, the canvas becomes a "garden" of emotions contributed by different users.
+- **Text input**: Acts as the "seed" for the visualization.
+- **The Algorithm**: Translates that sentiment into specific rules for color, form, and motion.
+- **The Outcome**: Over time, the canvas becomes a "garden" of emotions contributed by different users.
 
 **Why this?**
 
@@ -287,7 +288,7 @@ I love that this is both interactive and personal. Visualizing emotions is alway
 
 This sketch captures the core mechanic I’m going for. It’s all about that direct link between the user and the screen—you provide the 'seed' via the input bar, and the flower grows out of it in real-time. It’s the first step in turning a static word into a living, generative form.
 
-## First Prototype
+### The First Prototype
 
 To figure out the direction I wanted to take, I started with a basic canvas where I could test the "planting" logic. In this version, you enter an emotion like joy, happy, or anger into the bar and hit enter. The code then triggers the specific "plant" assigned to that word. It’s a simple start, but it’s the first step in seeing how a word can actually grow into a visual structure.
 
@@ -301,8 +302,8 @@ This is the most important part of the "Mind Garden." I’ve created a system th
    
 Instead of manually picking colors, I built a library of words categorized as **positive, negative, or neutral**. When a user types a word, the code checks which "bucket" it falls into and assigns it a `moodScore`.
 
-- 	**Positive** words (like *joy*) get a high score.
-- 	**Negative** words (like *angry*) get a low score. This score then dictates the "DNA" of the plant—specifically its color and how it behaves on the canvas. It’s a way of letting the user's emotion set the parameters for the algorithm.
+- 	Positive words (like *joy*) get a high score.
+- 	Negative words (like *angry*) get a low score. This score then dictates the "DNA" of the plant—specifically its color and how it behaves on the canvas. It’s a way of letting the user's emotion set the parameters for the algorithm.
 
 **2. Class-Based Growth (`class EmotionPlant`)**
    
@@ -311,7 +312,7 @@ I used a "class" to define what an `EmotionPlant` actually is. Think of this as 
 - 	I used "if/else" logic to change the geometry. Negative feelings create chaotic, spiky shapes using `beginShape()`, while positive feelings result in smooth, calm ellipses.
 - 	Inside the`grow()` function, I added a bit of math (`this.size += 0.3`) so the plants actually get bigger over time. It’s not just a static stamp; the "emotion" literally grows up the screen, making the garden feel like a living record of how people are feeling.
 
-## Second Prototype
+### The Second Prototype
 
 After making some adjustments, the current state of the garden looks like this:
 
@@ -358,17 +359,86 @@ This means "happy" (0.95) correctly becomes "not happy" (0.05), preventing the s
 
 4. All this logic feeds into the `EmotionPlant` class. Each plant is its own object that "remembers" its calculated score and source word. By moving away from a simple "if/then" system, the garden feels much more like it’s actually interpreting what’s on the user’s mind.
 
+### The Third Prototype
 
-
-## Prototype 3
+In this iteration, the "Mind Garden" has evolved into a much more expressive system. I’ve moved beyond simple "positive or negative" labels and created a visual language where every emotion has its own color, shape, and even its own way of moving.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/lzCFzuMod" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-### Improvments of Visuals
-
-Since a human beings emotion can't just be pushed into 3 catories and a Matthew reminded me of the movie inside out, i wanted to implement that into the project to improve the visual.
-
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/XbXVN_bI6" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+Here are the key elements that make this second prototype work:
+
+1. The Sentiment Mapping (Categorization)
+   
+The code now uses two parallel maps to interpret the input. The `EMOTION_MAP` handles the "intensity" (0 to 1), while the `EMOTION_CATEGORY` decides the "type" of plant that grows. This allows the system to distinguish between different types of negative feelings—like the difference between "sadness" and "anger."
+
+```js
+const EMOTION_MAP = {
+  joy: 0.9, happy: 0.9,
+  sad: 0.1, depressed: 0.05,
+  angry: 0.05, furious: 0.01
+};
+
+const EMOTION_CATEGORY = {
+  joy: "joy", 
+  sad: "sadness", 
+  angry: "anger"
+};
+```
+
+2. Advanced Sentiment Parsing
+The `getMood` function is where the real "thinking" happens. It doesn't just look for words; it cleans the text and looks for modifiers.
+
+  - Intensifiers & Downtoners: It checks if you said "very" or "slightly" and adjusts the score.
+  - Negation: It looks for "not" or "never" to flip the emotion entirely.
+  - Fuzzy Matching: It uses a helper function,`findEmotionWord`, to make sure that even if you type a variation of a word, the code can still find the root emotion.
+
+```js
+function findEmotionWord(w) {
+  if (EMOTION_MAP[w] !== undefined) return w;
+  for (let key in EMOTION_MAP) {
+    if (key.includes(w) || w.includes(key)) return key; // Partial matching
+  }
+  return null;
+}
+```
+
+3. Emotion-Specific Physics (`applyMotion`)
+   
+This is the part I find most interesting. I wanted the plants to "behave" like the emotions they represent. I added an `applyMotion()` method within the `EmotionPlant` class so they aren't just static shapes:
+
+  - Joy floats gently up and down using a `sin()` wave.
+  - Anger vibrates violently using `random(-1, 1)`.
+  - Sadness has a sinking feeling, drifting slowly downwards.
+
+```js
+applyMotion() {
+  this.t += 0.01;
+  if (this.mood === "joy") this.y += sin(this.t) * 0.3; // Floating
+  if (this.mood === "anger") this.x += random(-1, 1), this.y += random(-1, 1); // Shaking
+}
+```
+
+4. Visual Identity (The Halo and Shapes)
+   
+To make the garden feel more atmospheric, I added a `drawHalo()` function. It creates a soft, glowing aura around each plant by layering transparent ellipses.
+The growth logic also uses specific geometry for each mood:
+
+  - Anger uses `beginShape()` to create jagged, spiky edges.
+  - Fear is represented by sharp triangles.
+  - Joy and Sadness use softer, rounded ellipses but with different proportions (wide for joy, tall and drooping for sadness).
+
+```js
+if (this.mood === "anger") {
+  beginShape();
+  for (let i = 0; i < 6; i++) {
+    let r = this.size + random(-3, 4); // Spiky edges
+    vertex(this.x + cos(angle)*r, this.y - sin(angle)*r);
+  }
+  endShape(CLOSE);
+}
+```
 
 ---
 
