@@ -477,6 +477,16 @@ In the first prototype I was trying visualize that in a simple way.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/iqbApEpX_" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
+**The Logic of the System**
+
+- I’ve defined a 5-point scale where emotion dictates the object's "DNA." Using an `emotionMap` object, I link specific feelings to visual parameters: Frustrated becomes a jagged, low-poly red shard, while Efficient manifests as a smooth, high-detail green sphere.
+- The geometry scales based on the length of the user's text. By mapping `additionalText.length` to the `finalRadius`, the visualization grants physical "weight" to the user's voice; the more they share, the more space the sentiment occupies.
+- To ensure performance, I utilized p5.js Instance Mode and bypassed global geometry settings by passing detail parameters directly into `p.sphere()`. This allows the resolution of the mesh to shift instantly as the user toggles between states.
+
+Essentially, the code treats feedback not as a static data point, but as a living artifact that reflects the complexity of the user journey.`
+
+### 02
+
 In the second attend it looked already more like the reference
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/xx4RtjXxb" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
