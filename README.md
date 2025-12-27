@@ -293,65 +293,35 @@ To figure out the direction I wanted to take, I started with a basic canvas wher
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/6MoSRjm5T" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-**Explanations of key codes**
+**Turning Words into Rules**
 
-`let plants = [];`
+This is the most important part of the "Mind Garden." I’ve created a system that doesn’t just draw shapes, but actually interprets the sentiment of a word.
 
-This array stores all the emotion-plants the user creates.
-Each new word becomes a new instance of the EmotionPlant class.
+**1. The Mood Interpreter (`getMoodScore`)**
+   
+Instead of manually picking colors, I built a library of words categorized as **positive, negative, or neutral**. When a user types a word, the code checks which "bucket" it falls into and assigns it a `moodScore`.
 
-`button.mousePressed(() => addEmotion(input.value()));`
+- 	**Positive** words (like *joy*) get a high score.
+- 	**Negative** words (like *angry*) get a low score. This score then dictates the "DNA" of the plant—specifically its color and how it behaves on the canvas. It’s a way of letting the user's emotion set the parameters for the algorithm.
 
-Links the button to the emotion-creation system.
-When the user clicks Grow, the word they typed is processed and turned into a plant.
+**2. Class-Based Growth (`class EmotionPlant`)**
+   
+I used a "class" to define what an `EmotionPlant` actually is. Think of this as a master blueprint. Every time a word is entered, a new "object" is born with its own unique position, color, and shape based on the mood score.
 
-`getMoodScore(word)`
-
-This function classifies the user’s emotion word into a mood score:
-1 → positive
-0.5 → neutral
-0 → negative
-This single score determines color, shape, and growth behavior.
-
-`plants.push(new EmotionPlant(word, moodScore));`
-
-Creates a new plant object and adds it to the world.
-Every plant is independent and grows each animation frame.
-
-`class EmotionPlant { ... }`
-
-Encapsulates all the logic for representing emotions visually.
-Each plant stores:
-where it appears
-its color
-its growth size
-its shape behavior
-
-`getColor()`
-
-Maps emotion intensity to color:
-red → negative
-yellow → neutral
-blue → positive
-Color becomes a visual cue for emotional tone.
-
-`grow()`
-
-Runs every frame and determines:
-how the plant is drawn (chaotic / balanced / smooth)
-how fast and in what direction it grows
-This makes the sketch feel alive — each emotion keeps evolving on its own.
+- 	I used "if/else" logic to change the geometry. Negative feelings create chaotic, spiky shapes using `beginShape()`, while positive feelings result in smooth, calm ellipses.
+- 	Inside the`grow()` function, I added a bit of math (`this.size += 0.3`) so the plants actually get bigger over time. It’s not just a static stamp; the "emotion" literally grows up the screen, making the garden feel like a living record of how people are feeling.
 
 ## Second Prototype
 
-With these adjustments current state looks like this:
+After making some adjustments, the current state of the garden looks like this:
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/qzwCd8oHs" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
-### Improvements on the Emotinal Logic
+**Refining the Emotional Logic**
 
-**Weigted emotional dictionary**
-Instead of classifying words as only positive/neutral/negative, i'm giving them each a score between 0-1.
+The first version was a bit too "black and white," so I’ve been working on making the code understand the nuances of how we actually describe feelings. Here’s how I’m improving the logic:
+
+1.	**A Weighted Dictionary** Instead of just boxing words into "good," "bad," or "neutral," I’m giving each emotion a specific score between 0 and 1. This allows for a much smoother transition in the visuals—someone who is "calm" (0.7) will grow a plant that looks different from someone who is "happy" (0.9), even though they are both positive.
 
 ```js
 let emotionMap = {
@@ -363,19 +333,10 @@ let emotionMap = {
 };
 ```
 
-**Partial matching**
-Let's words like "happier", "angriness", "stressfull" still be recognized:
+2. **Partial Matching**I realized the code was too picky; if a user typed "stressed" but the code only knew "stress," nothing would happen. I’ve updated the logic so the system looks for the root of the word. Now, words like "happier," "angriness," or "stressful" are still recognized and trigger the correct growth.
 
-`if (word.includes("stress")) return 0.1;`
+3. **Using Intensifiers** To make it even more personal, I’m teaching the algorithm to look for adjectives that change the "volume" of the emotion. By checking for words like "very" or "slightly," the code can adjust the final score. It’s a simple way to let a "very happy" seed grow faster or larger than one that is only "slightly happy."
 
-`if (word.includes("happy")) return 0.9;`
-
-**Intensifiers**
-Giving Adjectives more value and letting them affecting the plant:
-
-`if (word.includes("very")) score += 0.1;`
-
-`if (word.includes("slightly")) score -= 0.1;`
 
 ## Prototype 3
 
