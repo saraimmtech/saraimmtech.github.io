@@ -540,8 +540,6 @@ for (let i = 0; i < points; i++) {
 
 Since I'm interested in UI/UX, I added a simple button system at the top. It allows the user to toggle between emotions before they hit Enter. It’s a clean way to bridge the gap between a standard input form and a generative art piece.
 
----
-
 # Final Reflection
 
 Coming from a carpentry background, I’ve always valued the "feel" of a finished product. This project allowed me to bring that same tactile, human sensibility into the world of UI/UX and code.
