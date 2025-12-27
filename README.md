@@ -150,7 +150,7 @@ Each knob is defined as a small object with a position, a radius, a rotation ang
 
 **Visual Representation**
 
-```
+```js
 Knob.prototype.draw = function() {
   rotate(this.angle);
   ellipse(0, 0, this.r*2);
@@ -319,23 +319,45 @@ After making some adjustments, the current state of the garden looks like this:
 
 **Refining the Emotional Logic**
 
-The first version was a bit too "black and white," so I’ve been working on making the code understand the nuances of how we actually describe feelings. Here’s how I’m improving the logic:
+The first version was a bit too "black and white," so I’ve been working on making the code understand the nuances of how we actually describe feelings. Instead of just picking out a single word, the code now scans the entire sentence to understand context, intensity, and even contradictions.
 
-1.	**A Weighted Dictionary** Instead of just boxing words into "good," "bad," or "neutral," I’m giving each emotion a specific score between 0 and 1. This allows for a much smoother transition in the visuals—someone who is "calm" (0.7) will grow a plant that looks different from someone who is "happy" (0.9), even though they are both positive.
-
+1.	I wanted the system to be forgiving. If a user types "stressed" or "stressful," the code doesn't just give up because it's looking for "stress." It uses a two-stage process to find the "root" of the word:
+   
 ```js
-let emotionMap = {
-  happy: 0.9,
-  calm: 0.7,
-  bored: 0.3,
-  anxious: 0.1,
-  angry: 0.05
-};
+// Stage 1: Substring/Includes match
+for (let k in EMOTION_MAP) {
+  if (k.includes(token) || token.includes(k)) {
+    base = EMOTION_MAP[k];
+    break;
+  }
+}
+
+// Stage 2: Root/Ending match
+if (base === null) {
+  for (let k in EMOTION_MAP) {
+    if (token.endsWith(k) || k.endsWith(token)) { 
+      base = EMOTION_MAP[k]; 
+      break; 
+    }
+  }
+}
 ```
 
-2. **Partial Matching**I realized the code was too picky; if a user typed "stressed" but the code only knew "stress," nothing would happen. I’ve updated the logic so the system looks for the root of the word. Now, words like "happier," "angriness," or "stressful" are still recognized and trigger the correct growth.
+2. The code doesn’t just look at the emotion; it looks at the words around it. It uses a `modifierFactor` to shift the mood score. If you type "extremely," the score is multiplied, making the plant grow larger or more intense. If you type "a bit," it scales the score back toward the center. It even handles two-word phrases like "kind of" by looking ahead at the next token.
+   
+3. The code now looks for **NEGATIONS** like "not" or "never." If it finds one of these words within a three-word window of an emotion, it "flips" the score around the neutral point (0.5).
+   
+```js
+// If negated, flip around neutral point (simple negation)
+if (recentNeg) {
+  adjusted = neutral - (adjusted - neutral);
+}
+```
 
-3. **Using Intensifiers** To make it even more personal, I’m teaching the algorithm to look for adjectives that change the "volume" of the emotion. By checking for words like "very" or "slightly," the code can adjust the final score. It’s a simple way to let a "very happy" seed grow faster or larger than one that is only "slightly happy."
+This means "happy" (0.95) correctly becomes "not happy" (0.05), preventing the system from growing a "joy" plant when the user is actually feeling the opposite.
+
+4. All this logic feeds into the `EmotionPlant` class. Each plant is its own object that "remembers" its calculated score and source word. By moving away from a simple "if/then" system, the garden feels much more like it’s actually interpreting what’s on the user’s mind.
+
 
 
 ## Prototype 3
@@ -347,6 +369,8 @@ let emotionMap = {
 Since a human beings emotion can't just be pushed into 3 catories and a Matthew reminded me of the movie inside out, i wanted to implement that into the project to improve the visual.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/XbXVN_bI6" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
+
+---
 
 # Shift of Concept
 
