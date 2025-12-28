@@ -435,29 +435,21 @@ if (this.mood === "anger") {
 
 # Shift of Concept
 
-My initial concept was an Emotional Garden—an interactive visualization where a single emotion word (e.g., "calm," "angry") seeds a personal, evolving, abstract form. The core fascination was the translation of subjective inner states into objective visual output.
+In this final project, I revisited my “Mind Garden” concept and changed its purpose. While I am still interested in translating subjective feelings into objective images, I have moved away from a personal diary toward a more functional tool for public relations.
 
-However, I recognized an opportunity to apply this generative visualization not just to personal emotion, but to constructive public engagement.
-
-The Shift: I'm transitioning from a purely expressive tool for personal reflection to an analytical tool for constructive service feedback. Instead of asking "How do you feel?" I'm asking "How did this service/feature make you feel, and why?"
-
-So the Core Concept of getting a visual feedback stays the same, simply its purpose has changed.
+Instead of a simple question like “How do you feel?”, I now ask: “How did you find this service and why?” This is a transition from expressive art to an analytical feedback system. By replacing sterile star ratings with generative forms, feedback becomes more human and much more subtle.
 
 ## The Generative Feedback Machine
 
-This interactive system is designed for service websites to gather more nuanced, actionable feedback than a simple star rating or open text box typically provides.
+This system was developed for service websites—such as Zalando—to collect actionable data that a simple text field would not normally capture.
 
-Input: Users interact with a feedback prompt after using a service (e.g., "How was the checkout process?"). They are presented with a constrained choice of emotional tones ("Frustrated," "Efficient," "Confused," "Delighted," etc.) and a small text input for elaboration.
+- Users select an emotional tone (such as “frustrated” or “efficient”) and then explain it in a text field.
+- The code combines the emotion and text into a shape.
+  - “Frustrated” triggers jagged, fast, red-orange movements, while “Excited” creates smooth, expanding yellow spheres.
+  - Specific words refine the shape. Entering “late” adds a heavy, sluggish texture; entering “smooth” sharpens the edges and increases smoothness.
+- Each response is added to a shared “feedback cloud.” For a service provider, this acts as a visual “service aura.” Instead of reading 1,000 comments, they can see a massive red rash and immediately recognize that there is a point of frustration that needs to be addressed.
 
-Generative Visualization: The system combines the chosen emotional tone and the semantic content of the text input to generate a unique, abstract 3D or 2D p5.js form.
-
-Emotion (Color/Motion): "Frustrated" might trigger jagged, rapid, red/orange forms. "Delighted" might generate smooth, slow, expanding yellow/gold spheres.
-
-Text Semantics (Form/Complexity): Analyzing the text ("The delivery was late" vs. "The design was sleek") refines the form. The word "late" might introduce a dragging, distorted texture, while "sleek" might sharpen the edges and increase smoothness.
-
-Visualization as Data: Each piece of feedback is instantly added to a collective, evolving visualization (a "Feedback Cloud" or "Service Aura").
-
-The service provider can view this collective visualization, immediately identifying dominant tones (a massive "Frustrated" spike) and drilling down into the specific forms/text associated with it to understand why the service feels that way.
+Translated with DeepL.com (free version)
 
 ## Giorgia Lupi (Data Humanism)
 
@@ -558,4 +550,3 @@ Since I'm interested in UI/UX, I added a simple button system at the top. It all
 Coming from a carpentry background, I’ve always valued the "feel" of a finished product. This project allowed me to bring that same tactile, human sensibility into the world of UI/UX and code.
 
 I’ve learned that code doesn't have to be cold. By using simple rules and a bit of "weighted randomness," we can create interfaces that feel as organic and complex as the people using them. The "Mind Garden" may have evolved into a "Feedback Machine," but the goal remains the same: making the digital world feel a little more human.
-
