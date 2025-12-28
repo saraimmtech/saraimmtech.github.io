@@ -488,7 +488,7 @@ But it still didn't quite fit my idea.
 
 In this third and final iteration, I finally have the foundation for my feedback machine. The core engine is now solid and successfully bridges the gap between technical 3D logic and human emotions.
 
-{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/ur0LAriT6" width="100%" height="550" frameborder="no"></iframe> {% endraw %}
+{% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/ur0LAriT6" width="100%" height="450" frameborder="no"></iframe> {% endraw %}
 
 Here are the key elements of how this system processes "human" data:
 
