@@ -541,10 +541,6 @@ for (let i = 0; i < points; i++) {
 }
 ```
 
-**Interactive UI**
-
-Since I'm interested in UI/UX, I added a simple button system at the top. It allows the user to toggle between emotions before they hit Enter. It’s a clean way to bridge the gap between a standard input form and a generative art piece.
-
 **Next Steps**
 
 To wrap things up, I’ve been thinking about where this project goes next. While the logic is solid, there’s a lot of room to refine the "Feedback Machine" to make it feel more like a professional, polished tool.
