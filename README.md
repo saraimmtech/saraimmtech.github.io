@@ -256,8 +256,6 @@ Instead of drawing the image tile, we use `img.get(sx, sy)` to pick up the color
 -	`ellipse()` instead of `image()`: We draw a circle filled with the sampled color.
 -	 Added `background(0)`because, unlike the rectangular tiles, circles leave small gaps between them where the canvas background shows through.
 
----
-
 # Mind Garden
 
 For my semester project, I decided to dive deeper into **Lesson 04 - Drawing Machines**. I wanted to see how I could move beyond simple shapes and create a generative system that actually acts as a tool for expression.
@@ -431,8 +429,6 @@ if (this.mood === "anger") {
 }
 ```
 
----
-
 # Shift of Concept
 
 In this final project, I revisited my “Mind Garden” concept and changed its purpose. While I am still interested in translating subjective feelings into objective images, I have moved away from a personal diary toward a more functional tool for public relations.
@@ -486,7 +482,11 @@ In the second attend it looked already more like the reference
 - Each entry is handled by the `FeedbackGlyph` class, which converts sentiment into a unique visual signature. I used the length of the user’s text to determine the "weight" of the icon: `let textFactor = min(floor(text.length / 10), 4);` `this.numMarks = this.params.baseMarks + textFactor;`. The more a user writes, the more complex the internal marks become, giving physical density to their effort.
 - The ledger doesn't just count characters; it listens for keywords. Using `this.params.keyword`, the code identifies high-intensity words like "late" or "bug." When detected, `this.hasDistortion` is triggered, adding a visual "shiver" to the lines: `let dist = this.hasDistortion ? sin(frameCount * 5 + angle) * 3 : 0;`
 
+But it still didn't quite fit my idea.
+
 ### 03
+
+In this third and final iteration, I finally have the foundation for my feedback machine. The core engine is now solid and successfully bridges the gap between technical 3D logic and human emotions.
 
 {% raw %} <iframe src="https://editor.p5js.org/trisaratops2.0/full/ur0LAriT6" width="100%" height="550" frameborder="no"></iframe> {% endraw %}
 
@@ -544,6 +544,12 @@ for (let i = 0; i < points; i++) {
 **Interactive UI**
 
 Since I'm interested in UI/UX, I added a simple button system at the top. It allows the user to toggle between emotions before they hit Enter. It’s a clean way to bridge the gap between a standard input form and a generative art piece.
+
+**Next Steps**
+
+To wrap things up, I’ve been thinking about where this project goes next. While the logic is solid, there’s a lot of room to refine the "Feedback Machine" to make it feel more like a professional, polished tool.
+
+Since I’m intrested most in UI/UX, the first thing I noticed is that the interface needs to be more intuitive. I need to improve the text placeholders and prompt indicators so users know exactly where and what to type without having to think about it. It’s about making the bridge between the "human" input and the "digital" growth as seamless as possible. I also want to add a "Feedback History" sidebar, where you can see a scrollable list of recent text entries that highlight which specific words triggered the shapes in the cloud.
 
 # Final Reflection
 
